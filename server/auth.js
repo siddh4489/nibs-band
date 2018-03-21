@@ -177,7 +177,7 @@ function login(req, res, next) {
         return res.send(401, invalidCredentials);
     }
 
-    db.query('SELECT id, firstName, lastName, email,sfid,loyaltyid__c as externalUserId, password__c AS password FROM salesforce.contact WHERE email=$1', [creds.email], true)
+    db.query('SELECT id, firstName, lastName, email,loyaltyid__c as externalUserId, password__c AS password FROM salesforce.contact WHERE email=$1', [creds.email], true)
         .then(function (user) {
             if (!user) {
                 return res.send(401, invalidCredentials);
@@ -187,7 +187,7 @@ function login(req, res, next) {
                 if (match) {
                     createAccessToken(user)
                         .then(function(token) {
-                            return res.send({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname,'sfid': user.sfid,'isformfilled':user.mg_isformfilled__c}, 'token': token});
+                            return res.send({'user':{'email': user.email, 'firstName': user.firstname, 'lastName': user.lastname,'isformfilled':user.mg_isformfilled__c}, 'token': token});
                         })
                         .catch(function(err) {
                             return next(err);    
