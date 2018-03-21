@@ -349,7 +349,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                     $ionicPopup.alert({title: 'Alert', content: "Signed Up successfully."});
                     $state.go("app.login");
                 }).error(function(err){
-                    $ionicPopup.alert({title: 'Oops', content: err});
+                    $ionicPopup.alert({title: 'Oops5', content: err});
                 });
         };
 
