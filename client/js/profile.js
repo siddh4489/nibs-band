@@ -75,32 +75,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
     //Controllers
     .controller('ProfileCtrl', function ($rootScope, $scope, $state, User, STATUS_LABELS, STATUS_DESCRIPTIONS) {
 
-        User.get().success(function(user) {
-            $rootScope.user = user;
-            //$scope.statusLabel = STATUS_LABELS[user.status - 1];
-            //$scope.statusDescription = STATUS_DESCRIPTIONS[user.status - 1];
-            $scope.statusLabel = 'Mailgapp';
-            $scope.statusDescription = 'Sign Up. Sign In. Sign On then Git Notified. Git Opened. Git On. With Your work/life';
-        });
-
-        $scope.popupDialog = function() {
-
-            if (navigator.notification) {
-                navigator.notification.alert(
-                    'You have a new message!',  // message
-                    function() {                // callback
-                        $state.go('app.messages');
-                    },
-                    'Nibs',                     // title
-                    'Open Inbox'             // buttonName
-                );
-            } else {
-                alert('You have a new message!');
-                $state.go('app.messages');
-            }
-
-        }
-
+       alert(' sid in profile ');
     })
 
     .controller('EditProfileCtrl', function ($scope, $window, $ionicPopup, S3Uploader, User, Preference, Size, Status) {
