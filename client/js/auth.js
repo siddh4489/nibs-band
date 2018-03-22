@@ -11,8 +11,10 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 url: "/login",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/login.html",
-                        controller: "LoginCtrl"
+                        //templateUrl: "templates/login.html",
+                        //controller: "LoginCtrl"
+                        templateUrl: "templates/sflogin.html",
+                        controller: "SfLoginCtrl"
                     }
                 }
             })
