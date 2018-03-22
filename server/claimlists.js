@@ -15,10 +15,12 @@ var db = require('./pghelper'),
         mode: 'single' // optional, 'single' or 'multi' user mode, multi default
     });
 
-
-org.authenticate({ username: userName, password: password}, function(err, resp) {
+//org.authenticate({ username: userName, password: password}, function(err, resp) {
+org.authenticate({ username: 'sid.demo@yahoo.com', password: '72scjp72'}, function(err, resp) {
     if(!err) {
-        console.log('nforce connection succeeded');
+        console.log('nforce connection succeeded...'+org.oauth.access_token);
+        console.log('nforce connection succeeded...'+resp);
+
      
     } else {
         console.log('nforce connection failed: ' + err.message);
