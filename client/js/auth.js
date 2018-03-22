@@ -102,7 +102,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         $window.localStorage.user = JSON.stringify(data.sfuser);
                         $window.localStorage.token = data.token;
                         console.log('user data is'+JSON.stringify(data.sfuser));
-                        console.log('Subscribing for Push as ' + data.sfuser.email);
                         if (typeof(ETPush) != "undefined") {
                             ETPush.setSubscriberKey(
                                 function() {
@@ -111,7 +110,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                                 function(error) {
                                     alert('Error setting Push Notification subscriber');
                                 },
-                                data.sfuser.email
+                                //data.sfuser.email
                             );
                         }
 
