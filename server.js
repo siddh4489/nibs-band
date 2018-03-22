@@ -45,7 +45,7 @@ app.use(function(err, req, res, next) {
 });
 
 app.post('/login', auth.login);
-//app.post('/sflogin', auth.sflogin);
+app.post('/sflogin', auth.sflogin);
 app.post('/logout', auth.validateToken, auth.logout);
 app.post('/signup', auth.signup);
 app.post('/fblogin', facebook.login);
