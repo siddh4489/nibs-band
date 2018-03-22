@@ -166,7 +166,7 @@ function updateVerificatonCodeStatus(req, res, next) {
  */
 function sflogin(req, res, next) {
     var creds = req.body;
-    return res.send('Hi '+creds);	
+    return res.send('Hi '+JSON.stringify(creds));	
 };
 
 /**
