@@ -169,7 +169,7 @@ function sflogin(req, res, next) {
 
     var creds = req.body;
     console.log(creds);
-    return res.send('Hi Sid '+creds);
+    return res.send('Hi Sid ');
 	
 };
 
