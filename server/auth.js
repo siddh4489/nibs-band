@@ -164,10 +164,10 @@ function updateVerificatonCodeStatus(req, res, next) {
  * @param next
  * @returns {*|ServerResponse}
  */
-/*function sflogin(req, res, next) {
+function sflogin(req, res, next) {
     var creds = req.body;
-    return res.send('Hi');	
-};*/
+    return res.send('Hi '+creds);	
+};
 
 /**
  * Regular login with application credentials
@@ -325,7 +325,7 @@ function validateToken (req, res, next) {
 };
 
 exports.login = login;
-//exports.sflogin = sflogin
+exports.sflogin = sflogin
 exports.logout = logout;
 exports.signup = signup;
 exports.createUser = createUser;
