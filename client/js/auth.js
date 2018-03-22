@@ -362,13 +362,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
         }).then(function(modal) {
             $scope.modal = modal;
         });
-        $scope.openAppDialog = function() {
-            $scope.modal.show();
-        };
-
-        $scope.$on('modal.hidden', function(event) {
-            $window.localStorage.setItem('serverURL', $rootScope.server.url);
-        });
+       
 
         $window.localStorage.removeItem('user');
         $window.localStorage.removeItem('token');
