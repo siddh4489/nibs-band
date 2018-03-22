@@ -11,15 +11,15 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 url: "/login",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/login.html",
-                        controller: "LoginCtrl"
-                        //templateUrl: "templates/sflogin.html",
-                        //controller: "SfLoginCtrl"
+                        //templateUrl: "templates/login.html",
+                        //controller: "LoginCtrl"
+                        templateUrl: "templates/sflogin.html",
+                        controller: "SfLoginCtrl"
                     }
                 }
             })
     
-       /*  .state('app.sflogin', {
+         .state('app.sflogin', {
                 url: "/sflogin",
                 views: {
                     'menuContent' :{
@@ -27,7 +27,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         controller: "SfLoginCtrl"
                     }
                 }
-            })*/
+            })
     
     
     
