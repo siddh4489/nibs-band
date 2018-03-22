@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/ccoenraets/loyalty",
   "engines": {
-    "node": "0.10.35"
+    "node": "8.1.4"
   },
   "dependencies": {
     "logfmt": "~0.21.0",
