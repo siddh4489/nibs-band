@@ -11,10 +11,10 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 url: "/login",
                 views: {
                     'menuContent' :{
-                        //templateUrl: "templates/login.html",
-                        //controller: "LoginCtrl"
-                        templateUrl: "templates/sflogin.html",
-                        controller: "SfLoginCtrl"
+                        templateUrl: "templates/login.html",
+                        controller: "LoginCtrl"
+                        //templateUrl: "templates/sflogin.html",
+                        //controller: "SfLoginCtrl"
                     }
                 }
             })
@@ -97,6 +97,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
             sflogin: function (sfuser) {
                 return $http.post($rootScope.server.url + '/sflogin', {user:sfuser})
                     .success(function (data) {
+                        alert(data);
                         $rootScope.user = data.user;
                         $window.localStorage.user = JSON.stringify(data.user);
                         $window.localStorage.token = data.token;
