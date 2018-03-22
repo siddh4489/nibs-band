@@ -94,8 +94,8 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                     });
             },
             
-            sflogin: function (user) {
-                return $http.post($rootScope.server.url + '/sflogin', user)
+            sflogin: function (sfuser) {
+                return $http.post($rootScope.server.url + '/sflogin', {user:sfuser})
                     .success(function (data) {
                         $rootScope.user = data.user;
 
@@ -371,7 +371,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
         $scope.sflogin = function () {
 
-            Auth.login($scope.sfuser)
+            Auth.sflogin($scope.sfuser)
                 .success(function (data) {
 
                     $ionicPopup.alert({title: 'Here', content: data});
