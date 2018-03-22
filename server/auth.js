@@ -167,8 +167,8 @@ function updateVerificatonCodeStatus(req, res, next) {
 function sflogin(req, res, next) {
 
     var creds = req.body;
-    console.log(creds);
-    return res.send('Hi Sid ');
+    console.log('WOW '+creds);
+    return res.send('Hi Sid '+creds);
 	
 };
 
