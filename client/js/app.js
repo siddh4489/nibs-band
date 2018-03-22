@@ -21,7 +21,7 @@ var app = angular.module('nibs', ['ionic','openfb','naif.base64','nibs.myaccount
 
         // Re-route to welcome street if we don't have an authenticated token
         $rootScope.$on('$stateChangeStart', function(event, toState) {
-
+               console.log(' Token ' + $window.localStorage.getItem('token'));
             if (toState.name !== 'app.login' && toState.name !== 'app.sflogin' && toState.name !== 'app.signup' && toState.name !== 'app.welcome' && toState.name !== 'app.logout' && toState.name !=='app.forgotpassword' && !$window.localStorage.getItem('token')) {
                 console.log('Aborting state ' + toState.name + ': No token');
                 $location.path('/app/welcome');
