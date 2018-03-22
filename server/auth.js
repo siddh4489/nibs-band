@@ -164,14 +164,13 @@ function updateVerificatonCodeStatus(req, res, next) {
  * @param next
  * @returns {*|ServerResponse}
  */
-/*function sflogin(req, res, next) {
-    winston.info('sf login');
+function sflogin(req, res, next) {
 
     var creds = req.body;
     console.log(creds);
     return res.send('Hi Sid ');
 	
-};*/
+};
 
 /**
  * Regular login with application credentials
@@ -329,7 +328,7 @@ function validateToken (req, res, next) {
 };
 
 exports.login = login;
-//exports.sflogin = sflogin
+exports.sflogin = sflogin
 exports.logout = logout;
 exports.signup = signup;
 exports.createUser = createUser;
