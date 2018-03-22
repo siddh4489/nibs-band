@@ -16,6 +16,18 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                     }
                 }
             })
+    
+    .state('app.sflogin', {
+                url: "/sflogin",
+                views: {
+                    'menuContent' :{
+                        templateUrl: "templates/sflogin.html",
+                        controller: "SfLoginCtrl"
+                    }
+                }
+            })
+    
+    
 
             .state('app.logout', {
                 url: "/logout",
@@ -57,6 +69,29 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
         return {
             login: function (user) {
                 return $http.post($rootScope.server.url + '/login', user)
+                    .success(function (data) {
+                        $rootScope.user = data.user;
+
+                        $window.localStorage.user = JSON.stringify(data.user);
+                        $window.localStorage.token = data.token;
+                        console.log('user data is'+JSON.stringify(data.user));
+                        console.log('Subscribing for Push as ' + data.user.email);
+                        if (typeof(ETPush) != "undefined") {
+                            ETPush.setSubscriberKey(
+                                function() {
+                                    console.log('setSubscriberKey: success');
+                                },
+                                function(error) {
+                                    alert('Error setting Push Notification subscriber');
+                                },
+                                data.user.email
+                            );
+                        }
+
+                    });
+            },
+            sflogin: function (sfuser) {
+                return $http.post($rootScope.server.url + '/sflogin', {user:sfuser})
                     .success(function (data) {
                         $rootScope.user = data.user;
 
@@ -313,6 +348,46 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 });
         };
 
+    })
+
+  .controller('SfLoginCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal, Auth, OpenFB) {
+
+        $ionicModal.fromTemplateUrl('templates/server-url-setting.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function(modal) {
+            $scope.modal = modal;
+        });
+        $scope.openAppDialog = function() {
+            $scope.modal.show();
+        };
+
+        $scope.$on('modal.hidden', function(event) {
+            $window.localStorage.setItem('serverURL', $rootScope.server.url);
+        });
+
+        $window.localStorage.removeItem('user');
+        $window.localStorage.removeItem('token');
+
+        $scope.sfuser = {};
+
+        $scope.sflogin = function () {
+
+            Auth.sflogin($scope.sfuser)
+                .success(function (data) {
+                        
+                        $ionicPopup.alert({title: 'Data', content: data});
+                        $state.go("app.home");
+                    
+
+
+                })
+                .error(function (err) {
+                    $ionicPopup.alert({title: 'Oops Here', content: err});
+                });
+        };
+
+        
     })
 
     .controller('LogoutCtrl', function ($rootScope, $window,$ionicPopup,$state) {
