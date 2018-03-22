@@ -168,8 +168,7 @@ function sflogin(req, res, next) {
 
     var creds = req.body;
     console.log(creds);
-    console.log(creds);
-    return res.send('Hi SFDC ');
+    return res.send('Hi');
 	
 };
 
