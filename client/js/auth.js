@@ -95,14 +95,14 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
             },
             
             sflogin: function (sfuser) {
-                return $http.post($rootScope.server.url + '/sflogin', {user:sfuser})
+                return $http.post($rootScope.server.url + '/sflogin', sfuser)
                     .success(function (data) {
-                        alert(data);
-                        $rootScope.user = data.user;
-                        $window.localStorage.user = JSON.stringify(data.user);
+                        alert('Wow '+data);
+                        $rootScope.user = data.sfuser;
+                        $window.localStorage.user = JSON.stringify(data.sfuser);
                         $window.localStorage.token = data.token;
-                        console.log('user data is'+JSON.stringify(data.user));
-                        console.log('Subscribing for Push as ' + data.user.email);
+                        console.log('user data is'+JSON.stringify(data.sfuser));
+                        console.log('Subscribing for Push as ' + data.sfuser.email);
                         if (typeof(ETPush) != "undefined") {
                             ETPush.setSubscriberKey(
                                 function() {
@@ -111,7 +111,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                                 function(error) {
                                     alert('Error setting Push Notification subscriber');
                                 },
-                                data.user.email
+                                data.sfuser.email
                             );
                         }
 
