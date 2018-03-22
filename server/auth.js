@@ -157,6 +157,20 @@ function updateVerificatonCodeStatus(req, res, next) {
     }); 
 };
 
+/**
+ * Regular login with application credentials
+ * @param req
+ * @param res
+ * @param next
+ * @returns {*|ServerResponse}
+ */
+function sflogin(req, res, next) {
+    winston.info('login');
+
+    var creds = req.body;
+    console.log(creds);
+	
+};
 
 /**
  * Regular login with application credentials
