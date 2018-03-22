@@ -165,10 +165,11 @@ function updateVerificatonCodeStatus(req, res, next) {
  * @returns {*|ServerResponse}
  */
 function sflogin(req, res, next) {
-    winston.info('login');
+    winston.info('sf login');
 
     var creds = req.body;
     console.log(creds);
+    return res.send('Hi Sid');
 	
 };
 
