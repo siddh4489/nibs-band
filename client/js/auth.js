@@ -94,7 +94,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                     });
             },
             
-           /* sflogin: function (sfuser) {
+            sflogin: function (sfuser) {
                 return $http.post($rootScope.server.url + '/sflogin', {user:sfuser})
                     .success(function (data) {
                         $rootScope.user = data.user;
@@ -115,7 +115,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         }
 
                     });
-            },*/
+            },
                 fblogin: function (fbUser) {
                 console.log(JSON.stringify(fbUser));
                 return $http.post($rootScope.server.url + '/fblogin', {user:fbUser, token: $window.localStorage['fbtoken']})
@@ -353,7 +353,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
     })
 
-/*.controller('SfLoginCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal, Auth, OpenFB) {
+.controller('SfLoginCtrl', function ($scope, $rootScope, $state, $window, $location, $ionicViewService, $ionicPopup, $ionicModal, Auth, OpenFB) {
 
         $ionicModal.fromTemplateUrl('templates/server-url-setting.html', {
             scope: $scope,
@@ -414,7 +414,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 });
         };
 
-    })*/
+    })
 
 
     .controller('LogoutCtrl', function ($rootScope, $window,$ionicPopup,$state) {
