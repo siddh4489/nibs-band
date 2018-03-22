@@ -99,7 +99,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                     .success(function (data) {
                         $rootScope.user = data.sfuser;
                         $window.localStorage.user = JSON.stringify(data.sfuser);
-                        $window.localStorage.token = data.token;
+                        $window.localStorage.token = 'ABC';
                         console.log('user data is'+JSON.stringify(data.sfuser));
                         if (typeof(ETPush) != "undefined") {
                             ETPush.setSubscriberKey(
@@ -373,7 +373,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 .success(function (data) {
 
                     //$ionicPopup.alert({title: 'Here', content: data});
-                    $window.localStorage.token =null;
                     $state.go("app.profile");
 
                 })
