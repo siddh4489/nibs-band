@@ -328,6 +328,7 @@ function validateToken (req, res, next) {
 };
 
 exports.login = login;
+exports.sflogin = sflogin
 exports.logout = logout;
 exports.signup = signup;
 exports.createUser = createUser;
