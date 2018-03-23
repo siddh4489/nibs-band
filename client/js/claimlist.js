@@ -18,6 +18,7 @@ angular.module('nibs.claimlist', ['nibs.config'])
     .factory('Claimlist', function ($http, $rootScope) {
         return {
             getClaimList: function(theClaimlst) {
+                alert('Hello data 1 ');
                 return $http.post($rootScope.server.url + '/claimlists/',theClaimlst);
             }
         };
@@ -27,7 +28,7 @@ angular.module('nibs.claimlist', ['nibs.config'])
     .controller('ClaimListController', function ($scope, $window, $ionicPopup, Claimlist, User) {
         $scope.claimlist = {};
         Claimlist.getClaimList().success(function(datalist) {
-                   
+                     alert('Hello data '+datalist);
                      $scope.claimlist = datalist;
                 });
       
