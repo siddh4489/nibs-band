@@ -51,7 +51,7 @@ conn.login('sid.demo@yahoo.com','72scjp72', function(err, userInfo) {
 function getClaims(req, res, next) {
       
       console.log('---getClaims-------req.userId---------'+req.userId);
-      var q = "SELECT Id, Name,Claimant_Name__c,Communication_Address__c,PAN_Number__c,Policy_Holder_Name__c,Telephone_Number__c FROM Claim__c";
+      var q = "SELECT Id, Name FROM Account";
 
         org.query({ query: q }, function(err, resp){
             
