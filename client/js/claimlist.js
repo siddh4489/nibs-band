@@ -28,7 +28,6 @@ angular.module('nibs.claimlist', ['nibs.config'])
     .controller('ClaimListController', function ($scope, $window, $ionicPopup, Claimlist, User) {
         $scope.claimlist = {};
         Claimlist.getClaimList().success(function(datalist) {
-                     alert('Hello data '+datalist);
                      $scope.claimlist = datalist;
                 });
       
