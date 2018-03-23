@@ -1,6 +1,6 @@
 var db = require('./pghelper'),
     config = require('./config'),
-    nforce = require('nforce'),
+   /* nforce = require('nforce'),
      
    
     userName = config.api.userName,
@@ -26,6 +26,26 @@ org.authenticate({ username: 'sid.demo@yahoo.com', password: '72scjp72'}, functi
         console.log('nforce connection failed: ' + err.message);
         oauth = resp;
     }
+});*/
+    
+var sf = require('node-salesforce');
+var conn = new sf.Connection({
+  // you can change loginUrl to connect to sandbox or prerelease env. 
+   loginUrl : 'https://login.salesforce.com' 
+});
+conn.login('sid.demo@yahoo.com','72scjp72', function(err, userInfo) {
+  if (err) { 
+      console.log(' Error here ');
+      return console.error(err); 
+  }
+  // Now you can get the access token and instance URL information. 
+  // Save them to establish connection next time. 
+  console.log(conn.accessToken);
+  console.log(conn.instanceUrl);
+  // logged in user property 
+  console.log("User ID: " + userInfo.id);
+  console.log("Org ID: " + userInfo.organizationId);
+  // ... 
 });
 
 function getClaims(req, res, next) {
