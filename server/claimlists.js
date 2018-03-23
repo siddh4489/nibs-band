@@ -31,7 +31,7 @@ org.authenticate({ username: 'sid.demo@yahoo.com', password: '72scjp72'}, functi
 function getClaims(req, res, next) {
       
       console.log('---getClaims-------req.userId---------'+req.userId);
-      var q = "SELECT Id, Name,Claimant_Name__c,Communication_Address__c,PAN_Number__c,Policy_Holder_Name__c,Telephone_Number__c FROM Claim__c Where Linked_Contact__c ='"+req.userId+"'";
+      var q = "SELECT Id, Name,Claimant_Name__c,Communication_Address__c,PAN_Number__c,Policy_Holder_Name__c,Telephone_Number__c FROM Claim__c";
 
         org.query({ query: q }, function(err, resp){
             
