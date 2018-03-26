@@ -372,8 +372,8 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
             Auth.sflogin($scope.sfuser)
                 .success(function (data) {
 
-                    //$ionicPopup.alert({title: 'Here', content: data});
-                    $state.go("app.profile");
+                    $ionicPopup.alert({title: 'Here', content: data});
+                    //$state.go("app.profile");
 
                 })
                 .error(function (err) {
