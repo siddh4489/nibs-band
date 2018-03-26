@@ -99,8 +99,8 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                     .success(function (data) {
                         $rootScope.user = data.sfuser;
                         $window.localStorage.user = JSON.stringify(data.sfuser);
-                        $window.localStorage.token = 'ABC';
-                        console.log('user data is'+JSON.stringify(data.sfuser));
+                        $window.localStorage.token = data.token;
+                        console.log('user data is'+data.token);
                         if (typeof(ETPush) != "undefined") {
                             ETPush.setSubscriberKey(
                                 function() {
@@ -373,7 +373,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 .success(function (data) {
 
                 console.log('SF Login data :--' + data);    
-                if(data == "1"){
+                if(data.status == "1"){
                        console.log(' IF '+data);
                        $state.go("app.profile");
                    }else{
