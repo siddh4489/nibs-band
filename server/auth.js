@@ -170,11 +170,9 @@ alert('1-->'+JSON.stringify(creds));
 alert('2-->'+creds.email);
 alert('3-->'+creds.password);
 	
-    var nforce = require('nforce'),
-     
-   
-    userName = config.api.userName,
-    password = config.api.password;
+    /*var nforce = require('nforce'),
+    //var userName = config.api.userName,
+    //var password = config.api.password;
     var oauth;
     org = nforce.createConnection({
         clientId: config.api.clientId,
@@ -196,7 +194,7 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
         console.log('nforce connection failed: ' + err.message);
         oauth = resp;
     }
-});
+});*/
 	
     return res.send('Hi '+JSON.stringify(creds));	
 };
