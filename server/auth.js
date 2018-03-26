@@ -187,7 +187,7 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
     if(!err) {
         console.log('nforce connection succeeded...'+org.oauth.access_token);
         console.log('nforce connection succeeded...'+resp);
-       return res.send('Suc '+org.oauth.access_token);
+       return res.send(JSON.stringify(resp)+'Suc '+org.oauth.access_token);
      
     } else {
         console.log('nforce connection failed: ' + err.message);
