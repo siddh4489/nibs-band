@@ -189,7 +189,7 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
 	console.log('----------------s------------');    
 	//$window.localStorage.setItem('sfconn',org);
         console.log('----------------E------------');    
-        return res.send('1');
+        return res.send({'status':'1','token':org.oauth.access_token});
      
     } else {
         console.log('nforce connection failed: ' + err.message);
