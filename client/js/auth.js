@@ -125,7 +125,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         $rootScope.user = data.user;
                         $window.localStorage.user = JSON.stringify(data.user);
                         $window.localStorage.token = data.token;
-                        $window.localStorage.setItem('sid','raj');
 
 
                         console.log('Subscribing for Push as ' + data.user.email);
@@ -148,7 +147,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 var promise = $http.post($rootScope.server.url + '/logout');
                 $window.localStorage.removeItem('user');
                 $window.localStorage.removeItem('token');
-                $window.localStorage.removeItem('sid')
+                $window.localStorage.removeItem('sid');
                 return promise;
             },
             signup: function (user) {
@@ -368,8 +367,9 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
         });
        
 
-        //$window.localStorage.removeItem('user');
-        //$window.localStorage.removeItem('token');
+        $window.localStorage.removeItem('user');
+        $window.localStorage.removeItem('token');
+        $window.localStorage.removeItem('sid');
 
         $scope.sfuser = {};
 
@@ -441,6 +441,8 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                  $rootScope.user = null;
                  $window.localStorage.removeItem('user');
                  $window.localStorage.removeItem('token');
+                 $window.localStorage.removeItem('sid');
+
                  $state.go('app.welcome');
               } else {
                  $state.go('app.profile');
