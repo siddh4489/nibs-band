@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt'),
     Q = require('q'),
     validator = require('validator'),
     winston = require('winston'),
-    invalidCredentials = 'Invalid email or password';
+    invalidCredentials = "Please check your username and password. If you still can't log in, contact your Salesforce administrator.";
 
 /**
  * Encrypt password with per-user salt
