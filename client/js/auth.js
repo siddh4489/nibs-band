@@ -76,8 +76,8 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         $rootScope.user = data.user;
 
                         $window.localStorage.user = JSON.stringify(data.user);
-                        $window.localStorage.token = data.token;
-                        console.log('user data is'+JSON.stringify(data.user));
+                        //$window.localStorage.token = data.token;
+                        console.log('user data is'+JSON.stringify(data));
                         console.log('Subscribing for Push as ' + data.user.email);
                         if (typeof(ETPush) != "undefined") {
                             ETPush.setSubscriberKey(
@@ -371,15 +371,15 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
             Auth.sflogin($scope.sfuser)
                 .success(function (data) {
-
+                $ionicPopup.alert({title: 'Message', content: data});
                 console.log('SF Login data :--' + data);    
-                if(data.status == "1"){
+                /*if(data.status == "1"){
                        console.log(' IF '+data);
                        $state.go("app.profile");
                    }else{
                        console.log(' Else '+data);
                        $ionicPopup.alert({title: 'Message', content: data});
-                   }
+                   }*/
                     
 
                 })
