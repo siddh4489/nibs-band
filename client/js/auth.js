@@ -372,12 +372,12 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
             Auth.sflogin($scope.sfuser)
                 .success(function (data) {
 
-                    $ionicPopup.alert({title: 'Here', content: data});
+                    //$ionicPopup.alert({title: 'Here', content: data});
                     $state.go("app.profile");
 
                 })
                 .error(function (err) {
-                    $ionicPopup.alert({title: 'Oops Here', content: err});
+                    $ionicPopup.alert({title: 'Oops', content: err});
                 });
         };
 
