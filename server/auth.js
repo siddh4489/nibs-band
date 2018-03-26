@@ -171,7 +171,7 @@ function sflogin(req, res, next) {
     var nforce = require('nforce'),
     //var userName = config.api.userName,
     //var password = config.api.password;
-    var oauth;
+    //var oauth;
     var org = nforce.createConnection({
         clientId: config.api.clientId,
         clientSecret: config.api.clientSecret,
@@ -190,7 +190,7 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
      
     } else {
         console.log('nforce connection failed: ' + err.message);
-        oauth = resp;
+        //oauth = resp;
 	return res.send('fail '+err.message);
     
     }
