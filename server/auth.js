@@ -166,6 +166,38 @@ function updateVerificatonCodeStatus(req, res, next) {
  */
 function sflogin(req, res, next) {
     var creds = req.body;
+alert('1-->'+JSON.stringify(creds));
+alert('2-->'+creds.email);
+alert('3-->'+creds.password);
+	
+    var nforce = require('nforce'),
+     
+   
+    userName = config.api.userName,
+    password = config.api.password;
+    var oauth;
+    org = nforce.createConnection({
+        clientId: config.api.clientId,
+        clientSecret: config.api.clientSecret,
+        redirectUri: config.api.redirectUri,
+        apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
+        environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
+        mode: 'single' // optional, 'single' or 'multi' user mode, multi default
+    });
+
+//org.authenticate({ username: userName, password: password}, function(err, resp) {
+org.authenticate({ username: creds.email, password: creds.password}, function(err, resp) {
+    if(!err) {
+        console.log('nforce connection succeeded...'+org.oauth.access_token);
+        console.log('nforce connection succeeded...'+resp);
+
+     
+    } else {
+        console.log('nforce connection failed: ' + err.message);
+        oauth = resp;
+    }
+});
+	
     return res.send('Hi '+JSON.stringify(creds));	
 };
 
