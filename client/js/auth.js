@@ -362,8 +362,8 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
         });
        
 
-        $window.localStorage.removeItem('user');
-        $window.localStorage.removeItem('token');
+        //$window.localStorage.removeItem('user');
+        //$window.localStorage.removeItem('token');
 
         $scope.sfuser = {};
 
@@ -373,7 +373,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 .success(function (data) {
 
                     $ionicPopup.alert({title: 'Here', content: data});
-                    $state.go("app.profile");
+                    //$state.go("app.profile");
 
                 })
                 .error(function (err) {
