@@ -373,7 +373,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 .success(function (data) {
 
                     $ionicPopup.alert({title: 'Here', content: data});
-                    //$state.go("app.profile");
+                    $state.go("app.profile");
 
                 })
                 .error(function (err) {
