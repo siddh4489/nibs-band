@@ -166,9 +166,8 @@ function updateVerificatonCodeStatus(req, res, next) {
  */
 function sflogin(req, res, next) {
     var creds = req.body;
-console.log('1-->'+JSON.stringify(creds));
-console.log('2-->'+creds.email);
-console.log('3-->'+creds.password);
+    console.log('1-->');
+
 	
     /*var nforce = require('nforce'),
     //var userName = config.api.userName,
@@ -196,7 +195,7 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
     }
 });*/
 	
-    return res.send('Hi '+JSON.stringify(creds));	
+    return res.send('Hello '+creds.email);	
 };
 
 /**
