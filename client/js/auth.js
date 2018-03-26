@@ -148,6 +148,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 var promise = $http.post($rootScope.server.url + '/logout');
                 $window.localStorage.removeItem('user');
                 $window.localStorage.removeItem('token');
+                $window.localStorage.removeItem('sid')
                 return promise;
             },
             signup: function (user) {
