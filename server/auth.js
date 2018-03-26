@@ -166,9 +166,9 @@ function updateVerificatonCodeStatus(req, res, next) {
  */
 function sflogin(req, res, next) {
     var creds = req.body;
-alert('1-->'+JSON.stringify(creds));
-alert('2-->'+creds.email);
-alert('3-->'+creds.password);
+//alert('1-->'+JSON.stringify(creds));
+//alert('2-->'+creds.email);
+//alert('3-->'+creds.password);
 	
     /*var nforce = require('nforce'),
     //var userName = config.api.userName,
