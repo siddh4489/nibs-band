@@ -166,10 +166,9 @@ function updateVerificatonCodeStatus(req, res, next) {
  */
 function sflogin(req, res, next) {
     var creds = req.body;
-    console.log('1-->');
 
 	
-    /*var nforce = require('nforce'),
+    var nforce = require('nforce'),
     //var userName = config.api.userName,
     //var password = config.api.password;
     var oauth;
@@ -187,13 +186,15 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
     if(!err) {
         console.log('nforce connection succeeded...'+org.oauth.access_token);
         console.log('nforce connection succeeded...'+resp);
-
+       return res.send('Suc '+org.oauth.access_token);
      
     } else {
         console.log('nforce connection failed: ' + err.message);
         oauth = resp;
+	return res.send('fail '+err.message);
+    
     }
-});*/
+});
 	
     return res.send('Hello '+creds.email);	
 };
