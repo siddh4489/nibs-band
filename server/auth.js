@@ -165,6 +165,7 @@ function updateVerificatonCodeStatus(req, res, next) {
  * @returns {*|ServerResponse}
  */
 function sflogin(req, res, next) {
+    console.log('-------start-----------');	
     var creds = req.body;
 
 	
@@ -196,7 +197,7 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
     }
 });
 	
-    return res.send('Hello '+creds.email);	
+    //return res.send('Hello '+creds.email);	
 };
 
 /**
