@@ -172,7 +172,7 @@ function sflogin(req, res, next) {
     //var userName = config.api.userName,
     //var password = config.api.password;
     var oauth;
-    org = nforce.createConnection({
+    var org = nforce.createConnection({
         clientId: config.api.clientId,
         clientSecret: config.api.clientSecret,
         redirectUri: config.api.redirectUri,
