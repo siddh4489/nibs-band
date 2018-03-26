@@ -186,10 +186,13 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
     if(!err) {
         console.log('nforce connection succeeded...'+org.oauth.access_token);
         console.log('nforce connection succeeded...'+resp);
-	console.log('----------------s------------');    
-	//$window.localStorage.setItem('sfconn',org);
-        console.log('----------------E------------');    
-        return res.send({'status':'1','token':org.oauth.access_token});
+	 
+	  org.getIdentity({ oauth: oauth }, function(err, res) {
+	    if(err) throw err;
+	    return res.send(res);
+	  });   
+	    
+        //return res.send({'status':'1','token':org.oauth.access_token});
      
     } else {
         console.log('nforce connection failed: ' + err.message);
