@@ -36,6 +36,8 @@ angular.module('nibs.settings', ['openfb', 'nibs.activity'])
             $rootScope.user = null;
             $window.localStorage.removeItem('user');
             $window.localStorage.removeItem('token');
+            $window.localStorage.removeItem('sid');
+
             $state.go('app.welcome');
         };
 
@@ -45,6 +47,8 @@ angular.module('nibs.settings', ['openfb', 'nibs.activity'])
                 $rootScope.user = null;
                 $window.localStorage.removeItem('user');
                 $window.localStorage.removeItem('token');
+                $window.localStorage.removeItem('sid');
+
                 $state.go('app.welcome');
             } else {
                 $ionicPopup.alert({title: 'Error', content: 'You need to be logged in with a Facebook user to use this option.'});
