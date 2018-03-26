@@ -122,6 +122,8 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         $rootScope.user = data.user;
                         $window.localStorage.user = JSON.stringify(data.user);
                         $window.localStorage.token = data.token;
+                        $window.localStorage.sid = 'raj';
+
 
                         console.log('Subscribing for Push as ' + data.user.email);
                         if (typeof(ETPush) != "undefined") {
