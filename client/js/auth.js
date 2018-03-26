@@ -373,7 +373,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                 .success(function (data) {
 
                 console.log('SF Login data :--' + data);    
-                if(data){
+                if(data=='true'){
                        $state.go("app.profile");
                    }else{
                        $ionicPopup.alert({title: 'Message', content: data});
