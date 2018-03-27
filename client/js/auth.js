@@ -377,7 +377,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
             Auth.sflogin($scope.sfuser)
                 .success(function (data) {
-                console.log('SF Login data :--' + data);    
+                console.log('SF Login data :--' + JSON.stringify(data));    
                 if(data.status == "1"){
                        console.log(' IF '+data);
                        $state.go("app.profile");
