@@ -377,9 +377,11 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
             Auth.sflogin($scope.sfuser)
                 .success(function (data) {
+                console.log('SF Login data :--' + data.token); 
                 console.log('SF Login data :--' + JSON.stringify(data)); 
                 console.log('SF Login data 1 :--' + JSON.stringify(data.runninguser));
-                console.log('SF Login data 2 :--' + JSON.stringify(data.runninguser).firstname);
+                console.log('SF Login data 2 :--' + data.runninguser[0].firstname);
+
 
                 
                 if(data.status == "1"){
