@@ -198,7 +198,7 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
 		      }
 		}); 
 	    
-        return res.send({'status':'1','token':org.oauth.access_token,'loggeduser':JSON.stringify(loggedUser)});
+        return res.send({'status':'1','token':org.oauth.access_token,'sid1':'raj1','loggeduser':JSON.stringify(loggedUser)});
      
     } else {
         console.log('nforce connection failed: ' + err.message);
