@@ -74,7 +74,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
 
     //Controllers
     .controller('ProfileCtrl', function ($rootScope, $scope, $state, User, STATUS_LABELS, STATUS_DESCRIPTIONS) {
-       $scope.statusLabel = 'Mailgapp';
+       $rootScope.statusLabel = 'Mailgapp';
        var peopleElement = document.getElementById("people");
         var orgChart = new getOrgChart(peopleElement, {
             primaryFields: ["name", "title", "phone", "mail"],
