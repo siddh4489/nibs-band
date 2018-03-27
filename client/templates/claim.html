@@ -1,4 +1,4 @@
-<ion-view title="Claim Form" hide-back-button="true">
+<ion-view title="Task Entry" hide-back-button="true">
 
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
@@ -8,29 +8,32 @@
         <div class="list list-inset">
 
             <fieldset>
-                <legend class="item item-input">Claim Form Details</legend>
+                <legend class="item item-input">Task Form Details</legend>
                 <div class=list>
                 	<label class="item item-input">
-                        <input type="text" placeholder="Name of the Policyholder" ng-model="claim.policyholdername">
+                        <input type="text" placeholder="Task Name" ng-model="claim.policyholdername">
                     </label>
-                    <label class="item item-input">
-                        <input type="text" placeholder="Name of the Claimant" ng-model="claim.claimant">
-                    </label>
+                    
                     <div class="item item-body">
-                        <textarea placeholder="Communication Address" rows="5" ng-model="claim.address"></textarea>
+                        <textarea placeholder="Task Description" rows="5" ng-model="claim.address"></textarea>
                       </div>
+                    
                     <label class="item item-input">
+                        <input type="text" placeholder="Project Type" ng-model="claim.claimant">
+                    </label>
+                    
+                    <!--<label class="item item-input">
                         <input type="text" placeholder="Telephone Number" ng-model="claim.phone">
                     </label>
                     <label class="item item-input">
                         <input type="text" placeholder="PAN Number" ng-model="claim.panno">
-                    </label>
+                    </label>-->
                   </div>
       </fieldset>
 
         </div>
       <button class="button button-block button-light" ng-click="submit()">
-                Submit
+                Save
         </button>
     </ion-content>
 
