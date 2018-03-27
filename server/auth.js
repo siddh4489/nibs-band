@@ -186,17 +186,16 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
     if(!err) {
         console.log('nforce connection succeeded...'+org.oauth.access_token);
         console.log('nforce connection succeeded...'+resp);
-	        var userquery = "SELECT Id, Firstname,email FROM User";
-	        //var userquery = "SELECT Id, Firstname,email FROM user Where email ='"+creds.email+"'";
+	        var userquery = "SELECT Id, Firstname,username FROM user Where username ='"+creds.email+"'";
 	        var loggedUser='T';
-		org.query({ query: userquery}, function(err, resp1){
+		org.query({ query: userquery}, function(err, res){
 
-		      if(!err && resp1.records) {
+		      if(!err && res.records) {
 			      loggedUser = resp1;
-			      return res.send({'status':'1','token':org.oauth.access_token,'sid1':'raj1','luser':resp1.records});
+			      return res.send({'status':'1','token':org.oauth.access_token,'runninguser':res.records});
 
 		      }else{
-			 res.send({'status':'1','error':err.message});
+			 //res.send({'status':'1','error':err.message});
 		      }
 		}); 
 	    
