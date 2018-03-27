@@ -188,17 +188,18 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
         console.log('nforce connection succeeded...'+resp);
 	        var userquery = "SELECT Id, Firstname FROM user Where email ='"+creds.email+"'";
 	        var loggedUser='T';
-		org.query({ query: userquery}, function(err, resp){
+		org.query({ query: userquery}, function(err, resp1){
 
 		      if(!err && resp.records) {
-			      loggedUser = resp;
-			 //res.send(resp.records);
+			      loggedUser = resp1;
+			      return res.send({'status':'1','token':org.oauth.access_token,'sid1':'raj1','luser':resp1});
+
 		      }else{
-			 //res.send('No record Available');
+			 res.send({'status':'1','sid':'raj'});
 		      }
 		}); 
 	    
-        return res.send({'status':'1','token':org.oauth.access_token,'sid1':'raj1','luser':loggedUser});
+        //return res.send({'status':'1','token':org.oauth.access_token,'sid1':'raj1','luser':loggedUser});
      
     } else {
         console.log('nforce connection failed: ' + err.message);
