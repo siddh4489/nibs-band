@@ -190,12 +190,12 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
 	        var loggedUser='T';
 		org.query({ query: userquery}, function(err, resp1){
 
-		      if(!err && resp.records) {
+		      if(!err && resp1.records) {
 			      loggedUser = resp1;
 			      return res.send({'status':'1','token':org.oauth.access_token,'sid1':'raj1','luser':resp1});
 
 		      }else{
-			 res.send({'status':'1','sid':'raj'});
+			 res.send({'status':'1','error':err.message});
 		      }
 		}); 
 	    
