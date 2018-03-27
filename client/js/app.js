@@ -23,6 +23,8 @@ var app = angular.module('nibs', ['ionic','openfb','naif.base64','nibs.myaccount
         $rootScope.$on('$stateChangeStart', function(event, toState) {
                console.log(' Token :--' + $window.localStorage.getItem('token'));
                console.log(' SID Token :--' + $window.localStorage.getItem('sid'));
+               console.log(' UserName :--' + $window.localStorage.getItem('username'));
+               console.log(' UserId :--' + $window.localStorage.getItem('userid'));
             if (toState.name !== 'app.login' && toState.name !== 'app.sflogin' && toState.name !== 'app.signup' && toState.name !== 'app.welcome' && toState.name !== 'app.logout' && toState.name !=='app.forgotpassword' && !$window.localStorage.getItem('token')) {
                 console.log('Aborting state ' + toState.name + ': No token');
                 $location.path('/app/welcome');
