@@ -53,8 +53,9 @@ function getClaims(req, res, next) {
       console.log('---getClaims-------req.userId---------'+req.userId);
       var q = "SELECT Id, Name FROM Account";
  
-        //var sfconnection = $window.localStorage.getItem('sfconn');
-        org.query({ query: q }, function(err, resp){
+        var sfconnection = $window.localStorage.getItem('sconn');
+    console.log('---sfconnection---------------'+sfconnection);
+        sfconnection.query({ query: q }, function(err, resp){
             
               if(!err && resp.records) {
                  res.send(resp.records);
