@@ -97,10 +97,13 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
             sflogin: function (sfuser) {
                 return $http.post($rootScope.server.url + '/sflogin', sfuser)
                     .success(function (data) {
+                        console.log('----------->'+ JSON.stringify(data)); 
                         $rootScope.user = data.sfuser;
                         $window.localStorage.user = JSON.stringify(data.sfuser);
                         $window.localStorage.token = data.token;
                         $window.localStorage.setItem('sid','raj');
+                        $window.localStorage.setItem('username',data.runninguser[0].firstname);
+                        $window.localStorage.setItem('userid',data.runninguser[0].id);
                         
                     console.log('sid data is'+$window.localStorage.getItem('sid'));    
                     console.log('user data is'+data.token);
