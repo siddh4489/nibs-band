@@ -4,30 +4,30 @@ angular.module('nibs.claimlist', ['nibs.config'])
     .config(function ($stateProvider) {
         $stateProvider
             .state('app.claimlist', {
-                url: "/claimlist",
+                url: "/tasklist",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/claimlist.html",
-                        controller: "ClaimListController"
+                        templateUrl: "templates/tasklist.html",
+                        controller: "TaskListController"
                     }
                 }
             })
     })
 
     // Services
-    .factory('Claimlist', function ($http, $rootScope) {
+    .factory('Tasklist', function ($http, $rootScope) {
         return {
-            getClaimList: function(theClaimlst) {
-                return $http.post($rootScope.server.url + '/claimlists/',theClaimlst);
+            getTaskList: function(theTasklst) {
+                return $http.post($rootScope.server.url + '/tasklist/',theTasklst);
             }
         };
     })
 
     //Controllers
-    .controller('ClaimListController', function ($scope, $window, $ionicPopup, Claimlist, User) {
+    .controller('TaskListController', function ($scope, $window, $ionicPopup, Tasklist, User) {
         $scope.claimlist = {};
         $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
-            Claimlist.getClaimList($scope.sfu).success(function(datalist) {
+            Tasklist.getTaskList($scope.sfu).success(function(datalist) {
                      $scope.claimlist = datalist;
                 });
   });
