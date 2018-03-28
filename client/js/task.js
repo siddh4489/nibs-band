@@ -53,7 +53,7 @@ angular.module('nibs.task', ['nibs.config'])
                         displayExpr: "name",
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
-                            $("#managerid").text(data.value.Name);
+                            $("#managerid").text(data.value.id);
                         }
                  });
         });
@@ -63,37 +63,18 @@ angular.module('nibs.task', ['nibs.config'])
                         displayExpr: "name",
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
-                            $("#projecttype").text(data.value.Name);
+                            $("#projecttype").text(data.value.id);
                         }
                  });
     
-             /*var managerList = [
-                    {
-                        "ID": 0,
-                        "Name": "--None--"
-                    },
-                    {
-                        "ID": 12334445555,
-                        "Name": "Sunil Sharma"
-                    }, {
-                        "ID": 22222222222,
-                        "Name": "Arya Rana"
-                    }, {
-                        "ID": 35555,
-                        "Name": "Siddhraj Atodaria"
-                    }];*/
-    
-    
              var projectType = ["Subscription","Deployment time reduction","Code Optimization","Config Cleanup","Data Purge","Platform Enhancements","UIPM","INC","Self Study"];
-    
-               
     
                $("#project").dxLookup({
                         items: projectType,
                         title: "Select Project Type",
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
-                            //$("#selected-employee").text(data.value.Name);
+                            $("#projecttype").text(data.value);
                         }
                     });
 
