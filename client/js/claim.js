@@ -28,9 +28,6 @@ angular.module('nibs.claim', ['nibs.config'])
        
              var test = [
                     {
-                        "ID": 0 ,
-                        "Name": "--None--"
-                    },{
                         "ID": 12334445555,
                         "Name": "John Heart"
                     }, {
