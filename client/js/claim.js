@@ -19,6 +19,9 @@ angular.module('nibs.claim', ['nibs.config'])
         return {
             create: function(theClaim) {
                 return $http.post($rootScope.server.url + '/claims/', theClaim);
+            },
+            getManager: function(theManager) {
+                return $http.post($rootScope.server.url + '/manager/', theManager);
             }
         };
     })
@@ -26,6 +29,15 @@ angular.module('nibs.claim', ['nibs.config'])
     //Controllers
     .controller('ClaimController', function ($scope, $window, $ionicPopup, Claim, User) {
        
+       $scope.manager = {};
+       $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+       Claim.getManager($scope.sfu).success(function(datalist) {
+           alert('--1 ->'+datalist);
+           $scope.manager = datalist;
+        });
+    
+      
+    
              var managerList = [
                     {
                         "ID": 0,
@@ -64,6 +76,8 @@ angular.module('nibs.claim', ['nibs.config'])
                         }
                     });
 
+    
+        
         $scope.claim = {};
 
         $scope.submit = function () {
