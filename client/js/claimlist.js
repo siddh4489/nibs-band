@@ -25,9 +25,10 @@ angular.module('nibs.claimlist', ['nibs.config'])
 
     //Controllers
     .controller('ClaimListController', function ($scope, $window, $ionicPopup, Claimlist, User) {
-        var data = $.param({'sfuser':$window.localStorage.getItem('sfuser'),'sfpassword':$window.localStorage.getItem('sfpassword')});
+        //var data = $.param({'sfuser':$window.localStorage.getItem('sfuser'),'sfpassword':$window.localStorage.getItem('sfpassword')});
         $scope.claimlist = {};
-            Claimlist.getClaimList().success(function(data,datalist) {
+        $scope.sfu = $window.localStorage.getItem('sfuser');
+            Claimlist.getClaimList($scope.sfu).success(function(datalist) {
                      $scope.claimlist = datalist;
                 });
       
