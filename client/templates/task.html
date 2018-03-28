@@ -11,14 +11,14 @@
                 <legend class="item item-input">Task Form Details</legend>
                    <div class=list>
                     <label class="item item-input">
-                        <input type="text" placeholder="Task Name" ng-model="claim.policyholdername">
+                        <input type="text" placeholder="Task Name" ng-model="task.name">
                     </label>
                     
                     <div class="item item-body">
-                        <textarea placeholder="Task Description" rows="5" ng-model="claim.address"></textarea>
+                        <textarea placeholder="Task Description" rows="5" ng-model="task.desc"></textarea>
                     </div>
                     <label class="item item-input">
-                        <input type="number" placeholder="No of Hours" ng-model="claim.hours">
+                        <input type="number" placeholder="No of Hours" ng-model="task.hours">
                     </label>
                     <label class="item">
                         <!--<input type="text" placeholder="Project Type" ng-model="claim.claimant">-->
@@ -31,20 +31,9 @@
 		                     <div ><div id="manager"></div></div>
 	                    </div>
                     </label>
-		    	
-                    <!--<label class="item item-input">
-                        <input type="text" placeholder="Telephone Number" ng-model="claim.phone">
-                    </label>
-                    <label class="item item-input">
-                        <input type="text" placeholder="PAN Number" ng-model="claim.panno">
-                    </label>-->
-                  </div>
-                
-                     <!--<div class="dx-field">
-                        <div class="dx-field-label"></div>
-                        <div class="dx-field-value">Selected Manager: <span id="selected-employee">none</span></div>
-                    </div>-->
-                
+		       <input type="hidden" id="managerid" name="managerid" ng-model="task.managerid">
+		       <input type="hidden" id="projecttype" name="projecttype" ng-model="task.projecttype">   
+	   
       </fieldset>
 
         </div>
