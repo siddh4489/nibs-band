@@ -33,19 +33,20 @@ angular.module('nibs.claim', ['nibs.config'])
                     },
                     {
                         "ID": 12334445555,
-                        "Name": "John Heart"
+                        "Name": "Sunil Sharma"
                     }, {
                         "ID": 22222222222,
-                        "Name": "SId"
+                        "Name": "Arya Rana"
                     }, {
                         "ID": 35555,
-                        "Name": "Heart"
+                        "Name": "Siddhraj Atodaria"
                     }];
     
                $("#event").dxLookup({
                         items: test,
                         title: "Select Manager",
                         displayExpr: "Name",
+                        placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
                             $("#selected-employee").text(data.value.Name);
                         }
