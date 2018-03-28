@@ -30,14 +30,21 @@ angular.module('nibs.claim', ['nibs.config'])
     .controller('ClaimController', function ($scope, $window, $ionicPopup, Claim, User) {
        
        $scope.manager = {};
-       var managerList;
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        Claim.getManager($scope.sfu).success(function(datalist) {
            alert('--1 ->'+JSON.stringify(datalist));
-           managerList = datalist;
+           $("#manager").dxLookup({
+                        items: datalist,
+                        title: "Select Manager",
+                        displayExpr: "name",
+                        placeholder: "Select Task Manager / Assignee",
+                        onValueChanged: function(data) {
+                            alert(data.value.name);
+                            //$("#selected-employee").text(data.value.Name);
+                        }
+                 });
         });
     
-        alert('--2 ->'+JSON.stringify(managerList));
     
              /*var managerList = [
                     {
@@ -58,15 +65,7 @@ angular.module('nibs.claim', ['nibs.config'])
     
              var projectType = ["Subscription","Deployment time reduction","Code Optimization","Config Cleanup","Data Purge","Platform Enhancements","UIPM","INC"];
     
-               $("#manager").dxLookup({
-                        items: managerList,
-                        title: "Select Manager",
-                        displayExpr: "name",
-                        placeholder: "Select Task Manager / Assignee",
-                        onValueChanged: function(data) {
-                            //$("#selected-employee").text(data.value.Name);
-                        }
-                 });
+               
     
                $("#project").dxLookup({
                         items: projectType,
