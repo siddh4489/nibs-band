@@ -95,7 +95,7 @@ app.delete('/activities', auth.validateToken, activities.deleteAll);
 
 app.post('/cases', auth.validateToken, cases.createCase);
 app.post('/claims', auth.validateToken, claims.createClaims);
-app.get('/manager', claims.getManagerList);
+app.post('/manager', claims.managerList);
 
 app.post('/claimlists', claimlists.getClaims);
 //app.post('/claimlists', auth.validateToken, claimlists.getClaims);
