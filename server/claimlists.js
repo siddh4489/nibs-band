@@ -27,7 +27,7 @@ conn.login('sid.demo@yahoo.com','72scjp72', function(err, userInfo) {
 });*/
 
 function getClaims(req, res, next) {
-     
+    var cred = req.body.params; 
     var oauth;
      org = nforce.createConnection({
             clientId: config.api.clientId,
@@ -40,7 +40,7 @@ function getClaims(req, res, next) {
 
     //org.authenticate({ username: userName, password: password}, function(err, resp) {
 
-    org.authenticate({ username: $window.localStorage.getItem('sfuser'), password: $window.localStorage.getItem('sfpassword')}, function(err, resp) {
+    org.authenticate({ username: cred.sfuser, password: cred.sfpassword}, function(err, resp) {
         if(!err) {
             console.log('nforce connection succeeded...'+org.oauth.access_token);
             console.log('nforce connection succeeded...'+resp);
