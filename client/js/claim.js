@@ -26,7 +26,11 @@ angular.module('nibs.claim', ['nibs.config'])
     //Controllers
     .controller('ClaimController', function ($scope, $window, $ionicPopup, Claim, User) {
        
-             var test = [{
+             var test = [
+                    {
+                        "ID": 0 ,
+                        "Name": "--None--"
+                    },{
                         "ID": 12334445555,
                         "Name": "John Heart"
                     }, {
@@ -39,11 +43,9 @@ angular.module('nibs.claim', ['nibs.config'])
     
                $("#event").dxLookup({
                         items: test,
-                      title: "Select Manager",
+                        title: "Select Manager",
                         displayExpr: "Name",
                         onValueChanged: function(data) {
-                      alert(data.value.ID);
-
                             $("#selected-employee").text(data.value.Name);
                         }
                     });
