@@ -57,15 +57,7 @@ angular.module('nibs.task', ['nibs.config'])
                         }
                  });
         });
-         $("#manager").dxLookup({
-                        items: managerList,
-                        title: "Select Manager",
-                        displayExpr: "name",
-                        placeholder: "Select Task Manager / Assignee",
-                        onValueChanged: function(data) {
-                            $("#projecttype").text(data.value.id);
-                        }
-                 });
+         
     
              var projectType = ["Subscription","Deployment time reduction","Code Optimization","Config Cleanup","Data Purge","Platform Enhancements","UIPM","INC","Self Study"];
     
