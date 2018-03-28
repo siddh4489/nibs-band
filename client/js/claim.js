@@ -26,7 +26,7 @@ angular.module('nibs.claim', ['nibs.config'])
     //Controllers
     .controller('ClaimController', function ($scope, $window, $ionicPopup, Claim, User) {
        
-             var test = [
+             var managerList = [
                     {
                         "ID": 0,
                         "Name": "--None--"
@@ -42,13 +42,26 @@ angular.module('nibs.claim', ['nibs.config'])
                         "Name": "Siddhraj Atodaria"
                     }];
     
-               $("#event").dxLookup({
-                        items: test,
+    
+             var projectType = ["Subscription","Deployment time reduction","Code Optimization","Config Cleanup","Data Purge","Platform Enhancements","UIPM","INC"];
+    
+               $("#manager").dxLookup({
+                        items: managerList,
                         title: "Select Manager",
                         displayExpr: "Name",
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
-                            $("#selected-employee").text(data.value.Name);
+                            //$("#selected-employee").text(data.value.Name);
+                        }
+                 });
+    
+               $("#project").dxLookup({
+                        items: projectType,
+                        title: "Select Project Type",
+                        displayExpr: "Name",
+                        placeholder: "Select Project Type",
+                        onValueChanged: function(data) {
+                            //$("#selected-employee").text(data.value.Name);
                         }
                     });
 
