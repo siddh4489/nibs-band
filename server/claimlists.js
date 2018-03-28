@@ -1,29 +1,7 @@
 var db = require('./pghelper'),
     config = require('./config'),
     nforce = require('nforce');
-     var oauth;
-     org = nforce.createConnection({
-            clientId: config.api.clientId,
-            clientSecret: config.api.clientSecret,
-            redirectUri: config.api.redirectUri,
-            apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
-            environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
-            mode: 'single' // optional, 'single' or 'multi' user mode, multi default
-        });
-
-    //org.authenticate({ username: userName, password: password}, function(err, resp) {
-
-    org.authenticate({ username: 'sid.demo@yahoo.com', password: '72scjp72'}, function(err, resp) {
-        if(!err) {
-            console.log('nforce connection succeeded...'+org.oauth.access_token);
-            console.log('nforce connection succeeded...'+resp);
-
-
-        } else {
-            console.log('nforce connection failed: ' + err.message);
-            oauth = resp;
-        }
-    }); 
+      
    
    
     
@@ -49,7 +27,30 @@ conn.login('sid.demo@yahoo.com','72scjp72', function(err, userInfo) {
 });*/
 
 function getClaims(req, res, next) {
-      
+     
+    var oauth;
+     org = nforce.createConnection({
+            clientId: config.api.clientId,
+            clientSecret: config.api.clientSecret,
+            redirectUri: config.api.redirectUri,
+            apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
+            environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
+            mode: 'single' // optional, 'single' or 'multi' user mode, multi default
+        });
+
+    //org.authenticate({ username: userName, password: password}, function(err, resp) {
+
+    org.authenticate({ username: $window.localStorage.getItem('sfuser'), password: $window.localStorage.getItem('sfpassword')}, function(err, resp) {
+        if(!err) {
+            console.log('nforce connection succeeded...'+org.oauth.access_token);
+            console.log('nforce connection succeeded...'+resp);
+
+
+        } else {
+            console.log('nforce connection failed: ' + err.message);
+            oauth = resp;
+        }
+    });
        
     
       console.log('---getClaims-------req.userId---------'+req.userId);
