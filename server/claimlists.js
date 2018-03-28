@@ -1,8 +1,8 @@
 var db = require('./pghelper'),
     config = require('./config'),
-    nforce = require('nforce'),
+    nforce = require('nforce');
      var oauth;
-     var org = nforce.createConnection({
+     org = nforce.createConnection({
             clientId: config.api.clientId,
             clientSecret: config.api.clientSecret,
             redirectUri: config.api.redirectUri,
