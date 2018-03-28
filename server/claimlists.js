@@ -1,35 +1,11 @@
 var db = require('./pghelper'),
     config = require('./config'),
     nforce = require('nforce');
-      
-   
-   
-    
-    
-/*var sf = require('node-salesforce');
-var conn = new sf.Connection({
-  // you can change loginUrl to connect to sandbox or prerelease env. 
-   loginUrl : 'https://login.salesforce.com' 
-});
-conn.login('sid.demo@yahoo.com','72scjp72', function(err, userInfo) {
-  if (err) { 
-      console.log(' Error here ');
-      return console.error(err); 
-  }
-  // Now you can get the access token and instance URL information. 
-  // Save them to establish connection next time. 
-  console.log(conn.accessToken);
-  console.log(conn.instanceUrl);
-  // logged in user property 
-  console.log("User ID: " + userInfo.id);
-  console.log("Org ID: " + userInfo.organizationId);
-  // ... 
-});*/
 
 function getClaims(req, res, next) {
     console.log('---claim--->'+req);
-    console.log('---claim 1--->'+req.body);
-    console.log('---claim 2--->'+req.body.sfu);
+    console.log('---claim 1--->'+req.body.spassword);
+    console.log('---claim 2--->'+req.body.suser);
     console.log('---claim 0 --->'+JSON.stringify(req.body));
     
 
@@ -45,7 +21,7 @@ function getClaims(req, res, next) {
 
     //org.authenticate({ username: userName, password: password}, function(err, resp) {
 
-    org.authenticate({ username: cred.sfuser, password: cred.sfpassword}, function(err, resp) {
+    org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
         if(!err) {
             console.log('nforce connection succeeded...'+org.oauth.access_token);
             console.log('nforce connection succeeded...'+resp);
@@ -57,9 +33,7 @@ function getClaims(req, res, next) {
         }
     });
        
-    
-      console.log('---getClaims-------req.userId---------'+req.userId);
-      var q = "SELECT Id, Name FROM Account";
+          var q = "SELECT Id, Name FROM Account";
  
         org.query({ query: q }, function(err, resp){
             
