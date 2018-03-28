@@ -2,7 +2,7 @@
     config = require('./config'),
     nforce = require('nforce');
      
-function getManagerList(req, res, next) {
+function managerList(req, res, next) {
     console.log('---getManager--->'+req);
     console.log('---getManager 1--->'+req.body.spassword);
     console.log('---getManager 2--->'+req.body.suser);
