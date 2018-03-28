@@ -37,7 +37,7 @@ angular.module('nibs.claim', ['nibs.config'])
            managerList = datalist;
         });
     
-      
+        alert('--2 ->'+JSON.stringify(managerList));
     
              /*var managerList = [
                     {
