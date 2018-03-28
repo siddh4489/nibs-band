@@ -103,12 +103,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                         $window.localStorage.token = data.token;
                         $window.localStorage.setItem('sid','raj');
                         $window.localStorage.setItem('username',data.runninguser[0].firstname);
-                        $window.localStorage.setItem('sfuser',data.sfuser);
-                        $window.localStorage.setItem('sfpassword',data.sfpassword);
-                        
-                        
-                        
-                    console.log('sid user data is'+$window.localStorage.getItem('sfuser'));    
+                    console.log('sid user data is'+$window.localStorage.getItem('sid'));    
                     console.log('user data is'+data.token);
                         if (typeof(ETPush) != "undefined") {
                             ETPush.setSubscriberKey(
