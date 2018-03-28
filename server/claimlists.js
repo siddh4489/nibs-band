@@ -16,7 +16,8 @@ var db = require('./pghelper'),
     });
 
 //org.authenticate({ username: userName, password: password}, function(err, resp) {
-org.authenticate({ username: 'sid.demo@yahoo.com', password: '72scjp72'}, function(err, resp) {
+
+org.authenticate({ username: $window.localStorage.getItem('sfuser'), password: $window.localStorage.getItem('sfpassword')}, function(err, resp) {
     if(!err) {
         console.log('nforce connection succeeded...'+org.oauth.access_token);
         console.log('nforce connection succeeded...'+resp);
