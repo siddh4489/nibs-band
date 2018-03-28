@@ -12,8 +12,10 @@ var express = require('express'),
     products = require('./server/products'),
     users = require('./server/users'),
     cases = require('./server/cases'),
-    claims = require('./server/claims'),
-    claimlists = require('./server/claimlists'),
+    //claims = require('./server/claims'),
+    //claimlists = require('./server/claimlists'),
+    task = require('./server/task'),
+    tasklist = require('./server/tasklist'),
     
     wallet = require('./server/wallet'),
     wishlist = require('./server/wishlist'),
@@ -94,10 +96,10 @@ app.post('/activities', auth.validateToken, activities.addItem);
 app.delete('/activities', auth.validateToken, activities.deleteAll);
 
 app.post('/cases', auth.validateToken, cases.createCase);
-app.post('/claims', auth.validateToken, claims.createClaims);
-app.post('/manager', claims.managerList);
+app.post('/task', auth.validateToken, task.createClaims);
+app.post('/manager', task.managerList);
 
-app.post('/claimlists', claimlists.getClaims);
+app.post('/tasklist', tasklist.getClaims);
 //app.post('/claimlists', auth.validateToken, claimlists.getClaims);
 
 app.get('/nfrevoke', cases.revokeToken);
