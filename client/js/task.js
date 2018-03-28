@@ -53,7 +53,10 @@ angular.module('nibs.task', ['nibs.config'])
                         displayExpr: "name",
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
-                            $("#managerid").text(data.value.id);
+                            $("#managerid").val(data.value.id);
+                            //var managerInput = $("#managerid");
+                            //managerInput.val(data.value.id);
+                            //managerInput.trigger('input');
                         }
                  });
         });
@@ -66,7 +69,7 @@ angular.module('nibs.task', ['nibs.config'])
                         title: "Select Project Type",
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
-                            $("#projecttype").text(data.value);
+                            $("#projecttype").val(data.value);
                         }
                     });
 
@@ -75,8 +78,9 @@ angular.module('nibs.task', ['nibs.config'])
         $scope.task = {};
 
         $scope.submit = function () {
+                
                 $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
-                Task.create($scope.task,$scope.sfu).success(function() {
+                Task.create($scope.task).success(function() {
                      $ionicPopup.alert({title: 'Thank You', content: 'Your Claim submitted successfully.'});
                      $scope.task = {};
                 });
