@@ -27,6 +27,8 @@ conn.login('sid.demo@yahoo.com','72scjp72', function(err, userInfo) {
 });*/
 
 function getClaims(req, res, next) {
+    console.log('---claim--->'+req);
+    console.log('---claim 1--->'+JSON.stringify(req));
     var cred = req.body.params; 
     var oauth;
      org = nforce.createConnection({
