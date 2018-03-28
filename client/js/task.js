@@ -85,13 +85,13 @@ angular.module('nibs.task', ['nibs.config'])
 
     
         
-        $scope.claim = {};
+        $scope.task = {};
 
         $scope.submit = function () {
             
-                Task.create($scope.claim).success(function() {
+                Task.create($scope.task).success(function() {
                      $ionicPopup.alert({title: 'Thank You', content: 'Your Claim submitted successfully.'});
-                     $scope.claim = {};
+                     $scope.task = {};
                 });
           
         };
