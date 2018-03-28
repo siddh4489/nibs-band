@@ -30,6 +30,7 @@ angular.module('nibs.claim', ['nibs.config'])
     .controller('ClaimController', function ($scope, $window, $ionicPopup, Claim, User) {
        
        $scope.manager = {};
+       var managerList=
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        Claim.getManager($scope.sfu).success(function(datalist) {
            $("#manager").dxLookup({
@@ -42,7 +43,15 @@ angular.module('nibs.claim', ['nibs.config'])
                         }
                  });
         });
-    
+         $("#manager").dxLookup({
+                        items: managerList,
+                        title: "Select Manager",
+                        displayExpr: "name",
+                        placeholder: "Select Task Manager / Assignee",
+                        onValueChanged: function(data) {
+                            //$("#selected-employee").text(data.value.Name);
+                        }
+                 });
     
              /*var managerList = [
                     {
@@ -61,7 +70,7 @@ angular.module('nibs.claim', ['nibs.config'])
                     }];*/
     
     
-             var projectType = ["Subscription","Deployment time reduction","Code Optimization","Config Cleanup","Data Purge","Platform Enhancements","UIPM","INC"];
+             var projectType = ["Subscription","Deployment time reduction","Code Optimization","Config Cleanup","Data Purge","Platform Enhancements","UIPM","INC","Self Study"];
     
                
     
