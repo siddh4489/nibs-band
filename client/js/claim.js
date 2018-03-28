@@ -58,7 +58,6 @@ angular.module('nibs.claim', ['nibs.config'])
                $("#project").dxLookup({
                         items: projectType,
                         title: "Select Project Type",
-                        displayExpr: "Name",
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
                             //$("#selected-employee").text(data.value.Name);
