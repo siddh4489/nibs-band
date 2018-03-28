@@ -32,14 +32,12 @@ angular.module('nibs.claim', ['nibs.config'])
        $scope.manager = {};
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        Claim.getManager($scope.sfu).success(function(datalist) {
-           alert('--1 ->'+JSON.stringify(datalist));
            $("#manager").dxLookup({
                         items: datalist,
                         title: "Select Manager",
                         displayExpr: "name",
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
-                            alert(data.value.name);
                             //$("#selected-employee").text(data.value.Name);
                         }
                  });
