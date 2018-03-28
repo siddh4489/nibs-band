@@ -1,9 +1,9 @@
-angular.module('nibs.claimlist', ['nibs.config'])
+angular.module('nibs.tasklist', ['nibs.config'])
 
     // Routes
     .config(function ($stateProvider) {
         $stateProvider
-            .state('app.claimlist', {
+            .state('app.tasklist', {
                 url: "/tasklist",
                 views: {
                     'menuContent' :{
