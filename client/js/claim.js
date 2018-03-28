@@ -32,7 +32,7 @@ angular.module('nibs.claim', ['nibs.config'])
        $scope.manager = {};
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        Claim.getManager($scope.sfu).success(function(datalist) {
-           alert('--1 ->'+datalist);
+           alert('--1 ->'+JSON.stringify(datalist));
            $scope.manager = datalist;
         });
     
