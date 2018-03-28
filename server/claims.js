@@ -1,30 +1,51 @@
     var db = require('./pghelper'),
     config = require('./config'),
-    nforce = require('nforce'),
+    nforce = require('nforce');
      
+function getManagerList(req, res, next) {
+    console.log('---getManager--->'+req);
+    console.log('---getManager 1--->'+req.body.spassword);
+    console.log('---getManager 2--->'+req.body.suser);
+    console.log('---getManager 3 --->'+JSON.stringify(req.body));
+    
 
-    userName = config.api.userName,
-    password = config.api.password;
+    var oauth;
+     org = nforce.createConnection({
+            clientId: config.api.clientId,
+            clientSecret: config.api.clientSecret,
+            redirectUri: config.api.redirectUri,
+            apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
+            environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
+            mode: 'single' // optional, 'single' or 'multi' user mode, multi default
+        });
 
-    org = nforce.createConnection({
-        clientId: config.api.clientId,
-        clientSecret: config.api.clientSecret,
-        redirectUri: config.api.redirectUri,
-        apiVersion: config.api.apiVersion,  // optional, defaults to current salesforce API version
-        environment: 'production',  // optional, salesforce 'sandbox' or 'production', production default
-        mode: 'single' // optional, 'single' or 'multi' user mode, multi default
+    //org.authenticate({ username: userName, password: password}, function(err, resp) {
+
+    org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
+        if(!err) {
+        var q = "SELECT Id, Name FROM User";
+ 
+        org.query({ query: q }, function(err, resp){
+            
+              if(!err && resp.records) {
+                 console.log('---getManager List--->'+resp.records);
+                 res.send(resp.records);
+              }else{
+                 res.send('No record Available');
+              }
+        });
+
+
+        } else {
+            console.log('nforce connection failed: ' + err.message);
+            oauth = resp;
+        }
     });
-
-
-org.authenticate({ username: userName, password: password}, function(err, resp) {
-    if(!err) {
-        console.log('nforce connection succeeded');
+       
+        
      
-    } else {
-        console.log('nforce connection failed: ' + err.message);
-     
-    }
-});
+};
+
 
 function createClaims(req, res, next) {
 
