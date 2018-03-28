@@ -28,10 +28,10 @@ conn.login('sid.demo@yahoo.com','72scjp72', function(err, userInfo) {
 
 function getClaims(req, res, next) {
     console.log('---claim--->'+req);
-    console.log('---claim 0 --->'+JSON.stringify(req.params));
-    var cred = req.body.params; 
-    console.log('---claim 1 --->'+JSON.stringify(cred));
-    console.log('---claim 2 --->'+$window.localStorage.getItem('sfuser'));
+    console.log('---claim 1--->'+req.body);
+    console.log('---claim 2--->'+req.body.sfu);
+    console.log('---claim 0 --->'+JSON.stringify(req.body));
+    
 
     var oauth;
      org = nforce.createConnection({
