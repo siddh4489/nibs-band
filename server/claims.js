@@ -104,4 +104,5 @@ function revokeToken(req, res, next) {
 }
 
 exports.createClaims = createClaims;
+exports.managerList = managerList;
 exports.revokeToken = revokeToken;
