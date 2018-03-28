@@ -47,7 +47,7 @@ function managerList(req, res, next) {
 };
 
 
-function createClaims(req, res, next) {
+function createTask(req, res, next) {
 
  db.query('SELECT sfid FROM salesforce.contact WHERE id=$1',[req.userId], true)
         .then(function (user) {
@@ -103,6 +103,6 @@ function revokeToken(req, res, next) {
 
 }
 
-exports.createClaims = createClaims;
+exports.createTask = createTask;
 exports.managerList = managerList;
 exports.revokeToken = revokeToken;
