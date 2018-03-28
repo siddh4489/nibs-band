@@ -21,10 +21,7 @@ angular.module('nibs.claim', ['nibs.config'])
                 return $http.post($rootScope.server.url + '/claims/', theClaim);
             },
             getManager: function(theManager) {
-                return $http.post($rootScope.server.url + '/manager', theManager)
-                .success(function (data) {
-                    alert('## '+data);
-                 });
+                return $http.post($rootScope.server.url + '/manager', theManager);
             }
         };
     })
