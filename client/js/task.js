@@ -4,21 +4,21 @@ angular.module('nibs.claim', ['nibs.config'])
     .config(function ($stateProvider) {
         $stateProvider
             .state('app.claim', {
-                url: "/claimform",
+                url: "/task",
                 views: {
                     'menuContent' :{
-                        templateUrl: "templates/claim.html",
-                        controller: "ClaimController"
+                        templateUrl: "templates/task.html",
+                        controller: "TaskController"
                     }
                 }
             })
     })
 
     // Services
-    .factory('Claim', function ($http, $rootScope) {
+    .factory('Task', function ($http, $rootScope) {
         return {
-            create: function(theClaim) {
-                return $http.post($rootScope.server.url + '/claims/', theClaim);
+            create: function(theTask) {
+                return $http.post($rootScope.server.url + '/task/', theTask);
             },
             getManager: function(theManager) {
                 return $http.post($rootScope.server.url + '/manager', theManager);
@@ -27,12 +27,12 @@ angular.module('nibs.claim', ['nibs.config'])
     })
 
     //Controllers
-    .controller('ClaimController', function ($scope, $window, $ionicPopup, Claim, User) {
+    .controller('TaskController', function ($scope, $window, $ionicPopup, Task, User) {
        
        $scope.manager = {};
        var managerList=
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
-       Claim.getManager($scope.sfu).success(function(datalist) {
+       Task.getManager($scope.sfu).success(function(datalist) {
            $("#manager").dxLookup({
                         items: datalist,
                         title: "Select Manager",
@@ -89,7 +89,7 @@ angular.module('nibs.claim', ['nibs.config'])
 
         $scope.submit = function () {
             
-                Claim.create($scope.claim).success(function() {
+                Task.create($scope.claim).success(function() {
                      $ionicPopup.alert({title: 'Thank You', content: 'Your Claim submitted successfully.'});
                      $scope.claim = {};
                 });
