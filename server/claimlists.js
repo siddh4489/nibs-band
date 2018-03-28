@@ -25,6 +25,17 @@ function getClaims(req, res, next) {
         if(!err) {
             console.log('nforce connection succeeded...'+org.oauth.access_token);
             console.log('nforce connection succeeded...'+resp);
+        var q = "SELECT Id, Name FROM Account";
+ 
+        org.query({ query: q }, function(err, resp){
+            
+              if(!err && resp.records) {
+                 console.log(JSON.stringify(resp.records)+'nforce connection records...'+resp.records); 
+                 res.send(resp.records);
+              }else{
+                 res.send('No record Available');
+              }
+        });
 
 
         } else {
@@ -33,16 +44,7 @@ function getClaims(req, res, next) {
         }
     });
        
-          var q = "SELECT Id, Name FROM Account";
- 
-        org.query({ query: q }, function(err, resp){
-            
-              if(!err && resp.records) {
-                 res.send(resp.records);
-              }else{
-                 res.send('No record Available');
-              }
-        }); 
+        
      
 };
 
