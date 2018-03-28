@@ -18,27 +18,18 @@
                         <textarea placeholder="Task Description" rows="5" ng-model="claim.address"></textarea>
                       </div>
                     
-                    <label class="item item-input">
-                        <input type="text" placeholder="Project Type" ng-model="claim.claimant">
+                    <label class="item">
+                        <!--<input type="text" placeholder="Project Type" ng-model="claim.claimant">-->
+			     <div class="dx-field">
+		                     <div ><div id="project"></div></div>
+	                    </div>
                     </label>
                     <label class="item">
                             <div class="dx-field">
-		                     <div ><div id="event"></div></div>
+		                     <div ><div id="manager"></div></div>
 	                    </div>
                     </label>
-		    	<ion-list>
-			  <ion-item>
-			    <ion-label>Gaming</ion-label>
-			    <ion-select ng-model="claim.games">
-			      <ion-option value="nes">NES</ion-option>
-			      <ion-option value="n64">Nintendo64</ion-option>
-			      <ion-option value="ps">PlayStation</ion-option>
-			      <ion-option value="genesis">Sega Genesis</ion-option>
-			      <ion-option value="saturn">Sega Saturn</ion-option>
-			      <ion-option value="snes">SNES</ion-option>
-			    </ion-select>
-			  </ion-item>
-			</ion-list>	
+		    	
                     <!--<label class="item item-input">
                         <input type="text" placeholder="Telephone Number" ng-model="claim.phone">
                     </label>
