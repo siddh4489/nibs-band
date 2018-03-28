@@ -53,10 +53,10 @@ angular.module('nibs.task', ['nibs.config'])
                         displayExpr: "name",
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
-                            $("#managerid").val(data.value.id);
-                            //var managerInput = $("#managerid");
-                            //managerInput.val(data.value.id);
-                            //managerInput.trigger('input');
+                            //$("#managerid").val(data.value.id);
+                            var managerInput = $("#managerid");
+                            managerInput.val(data.value.id);
+                            managerInput.trigger('input');
                         }
                  });
         });
@@ -69,7 +69,10 @@ angular.module('nibs.task', ['nibs.config'])
                         title: "Select Project Type",
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
-                            $("#projecttype").val(data.value);
+                            //$("#projecttype").val(data.value);
+                            var projectInput = $("#projecttype");
+                            projectInput.val(data.value);
+                            projectInput.trigger('input');
                         }
                     });
 
