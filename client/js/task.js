@@ -47,6 +47,8 @@ angular.module('nibs.task', ['nibs.config'])
        $scope.task = {};
        var managerList;
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+       var managerId;
+       var projectType;
        Task.getManager($scope.sfu).success(function(datalist) {
            $("#manager").dxLookup({
                         items: datalist,
@@ -54,6 +56,7 @@ angular.module('nibs.task', ['nibs.config'])
                         displayExpr: "name",
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
+                              managerId = data.value.id;
                               //$scope.task = {managerid: data.value};
                         }
                  });
@@ -67,13 +70,14 @@ angular.module('nibs.task', ['nibs.config'])
                         title: "Select Project Type",
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
+                            projectType = data.value
                             //$scope.task = {projecttype: data.value};
                         }
                     });
 
     
         
-        $scope.task = {managerid: '123456789077'};
+        $scope.task = {managerid: managerId,projecttype:projectType,sfu: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('spassword')};
         $scope.submit = function () {
                 //$scope.task = {sfu: $window.localStorage.getItem('sfuser')};
                 //$scope.task = {sfu: $window.localStorage.getItem('spassword')};
