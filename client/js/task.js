@@ -75,8 +75,9 @@ angular.module('nibs.task', ['nibs.config'])
         
         
         $scope.submit = function () {
-                $scope.task = {sfu: $window.localStorage.getItem('sfuser')};
-                $scope.task = {sfu: $window.localStorage.getItem('spassword')};
+                //$scope.task = {sfu: $window.localStorage.getItem('sfuser')};
+                //$scope.task = {sfu: $window.localStorage.getItem('spassword')};
+               alert(JSON.strigify($scope.task));
                 Task.create($scope.task).success(function() {
                      $ionicPopup.alert({title: 'Thank You', content: 'Your Claim submitted successfully.'});
                      $scope.task = {};
