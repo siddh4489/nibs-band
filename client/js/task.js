@@ -74,6 +74,8 @@ angular.module('nibs.task', ['nibs.config'])
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
                             pName = data.value;
+                            $scope.task = {projecttype: pName};
+                            alert(JSON.stringify($scope.task));
                         }
                     });
        
