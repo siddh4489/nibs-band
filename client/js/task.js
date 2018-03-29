@@ -59,7 +59,7 @@ angular.module('nibs.task', ['nibs.config'])
                         onValueChanged: function(data) {
                               mId = data.value.id;
                               //$("#managerid").val(mId);
-                              this.task.managerid =  mId;
+                              $scope.task.managerid =  mId;
                               alert(JSON.stringify($scope.task));
 
                         }
@@ -75,7 +75,7 @@ angular.module('nibs.task', ['nibs.config'])
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
                             pName = data.value;
-                            this.task.projecttype =  pName;
+                            $scope.task.projecttype =  pName;
                            // $("#projecttype").val(pName);
                             //$scope.task = {projecttype: pName};
                             //alert(JSON.stringify($scope.task));
