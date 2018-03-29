@@ -56,9 +56,7 @@ angular.module('nibs.task', ['nibs.config'])
                         displayExpr: "name",
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
-                              alert(data.value.id);
                               mId = data.value.id;
-                              //$scope.task = {managerid: data.value};
                         }
                  });
         });
@@ -71,18 +69,16 @@ angular.module('nibs.task', ['nibs.config'])
                         title: "Select Project Type",
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
-                            alert(data.value);
                             pName = data.value;
-                            //$scope.task = {projecttype: data.value};
                         }
                     });
 
     
        $scope.submit = function () {
-                  alert(' mId--'+mId);
-                  alert(' projecttype --'+pName);
+                  alert(' $scope.task--'+$scope.task);
+                  alert(' $scope.task Json--'+JSON.strigify($scope.task));
                   $scope.task = {managerid: mId,projecttype:pName,sfu: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('sfpassword')};
-        
+                  alert(' $scope.task Json 2--'+JSON.strigify($scope.task));
                 //$scope.task = {sfu: $window.localStorage.getItem('sfuser')};
                 //$scope.task = {sfu: $window.localStorage.getItem('spassword')};
                 //alert(JSON.strigify($scope.task));
