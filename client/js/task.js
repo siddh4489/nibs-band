@@ -73,7 +73,7 @@ angular.module('nibs.task', ['nibs.config'])
 
     
         
-        
+        $scope.task = {managerid: '123456789077'};
         $scope.submit = function () {
                 //$scope.task = {sfu: $window.localStorage.getItem('sfuser')};
                 //$scope.task = {sfu: $window.localStorage.getItem('spassword')};
