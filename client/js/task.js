@@ -78,10 +78,11 @@ angular.module('nibs.task', ['nibs.config'])
                     });
 
     
-        alert(' mId--'+mId);
-        alert(' projecttype --'+pName);
-        $scope.task = {managerid: mId,projecttype:pName,sfu: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('sfpassword')};
-        $scope.submit = function () {
+       $scope.submit = function () {
+                  alert(' mId--'+mId);
+                  alert(' projecttype --'+pName);
+                  $scope.task = {managerid: mId,projecttype:pName,sfu: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('sfpassword')};
+        
                 //$scope.task = {sfu: $window.localStorage.getItem('sfuser')};
                 //$scope.task = {sfu: $window.localStorage.getItem('spassword')};
                 //alert(JSON.strigify($scope.task));
