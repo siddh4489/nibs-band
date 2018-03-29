@@ -44,6 +44,7 @@ angular.module('nibs.task', ['nibs.config'])
        today = mm + '/' + dd + '/' + yyyy;
        $("#date").text(today);
        $scope.manager = {};
+       $scope.task = {};
        var managerList;
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        Task.getManager($scope.sfu).success(function(datalist) {
@@ -53,10 +54,7 @@ angular.module('nibs.task', ['nibs.config'])
                         displayExpr: "name",
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
-                            //$("#managerid").val(data.value.id);
-                            var managerInput = $("#managerid");
-                            managerInput.val(data.value.id);
-                            managerInput.trigger('input');
+                              $scope.task = {managerid: data.value};
                         }
                  });
         });
@@ -69,20 +67,16 @@ angular.module('nibs.task', ['nibs.config'])
                         title: "Select Project Type",
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
-                            //$("#projecttype").val(data.value);
-                            var projectInput = $("#projecttype");
-                            projectInput.val(data.value);
-                            projectInput.trigger('input');
+                            $scope.task = {projecttype: data.value};
                         }
                     });
 
     
         
-        $scope.task = {};
-
+        
         $scope.submit = function () {
-                
-                $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+                $scope.task = {sfu: $window.localStorage.getItem('sfuser')};
+                $scope.task = {sfu: $window.localStorage.getItem('spassword')};
                 Task.create($scope.task).success(function() {
                      $ionicPopup.alert({title: 'Thank You', content: 'Your Claim submitted successfully.'});
                      $scope.task = {};
