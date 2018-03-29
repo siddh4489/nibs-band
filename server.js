@@ -99,7 +99,7 @@ app.post('/cases', auth.validateToken, cases.createCase);
 app.post('/task',  task.createTask);
 app.post('/manager', task.managerList);
 
-app.post('/tasklist', tasklist.getClaims);
+app.post('/tasklist', tasklist.getTasklists);
 //app.post('/claimlists', auth.validateToken, claimlists.getClaims);
 
 app.get('/nfrevoke', cases.revokeToken);
