@@ -71,13 +71,15 @@ angular.module('nibs.task', ['nibs.config'])
                         title: "Select Project Type",
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
-                            pName = data.value
+                            alert(data.value);
+                            pName = data.value;
                             //$scope.task = {projecttype: data.value};
                         }
                     });
 
     
-        
+        alert(' mId--'+mId);
+        alert(' projecttype --'+pName);
         $scope.task = {managerid: mId,projecttype:pName,sfu: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('sfpassword')};
         $scope.submit = function () {
                 //$scope.task = {sfu: $window.localStorage.getItem('sfuser')};
