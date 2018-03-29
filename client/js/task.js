@@ -58,8 +58,9 @@ angular.module('nibs.task', ['nibs.config'])
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
                               mId = data.value.id;
-                              $scope.task = {managerid: mId};
-                               alert(JSON.stringify($scope.task));
+                              //$("#managerid").val(mId);
+                              this.task.managerid =  mId;
+                              alert(JSON.stringify($scope.task));
 
                         }
                  });
@@ -74,13 +75,16 @@ angular.module('nibs.task', ['nibs.config'])
                         placeholder: "Select Project Type",
                         onValueChanged: function(data) {
                             pName = data.value;
-                            $scope.task = {projecttype: pName};
-                            alert(JSON.stringify($scope.task));
+                            this.task.projecttype =  pName;
+                           // $("#projecttype").val(pName);
+                            //$scope.task = {projecttype: pName};
+                            //alert(JSON.stringify($scope.task));
                         }
                     });
        
 
        $scope.submit = function () {
+              
                   alert('$scope.task Json--'+JSON.stringify($scope.task));
                   //$scope.task = {managerid: mId};                            
                   //$scope.task = {managerid: mId,projecttype:pName,sfu: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('sfpassword')};
@@ -88,10 +92,10 @@ angular.module('nibs.task', ['nibs.config'])
                 //$scope.task = {sfu: $window.localStorage.getItem('sfuser')};
                 //$scope.task = {sfu: $window.localStorage.getItem('spassword')};
                 //alert(JSON.strigify($scope.task));
-                Task.create($scope.task).success(function() {
+                /*Task.create($scope.task).success(function() {
                      $ionicPopup.alert({title: 'Thank You', content: 'Your Claim submitted successfully.'});
                      $scope.task = {};
-                });
+                });*/
           
         };
 
