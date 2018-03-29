@@ -57,8 +57,41 @@ function createTask(req, res, next) {
     console.log('---createTask 1--->'+req.body.spassword);
     console.log('---createTask 2--->'+req.body.suser);
     console.log('---createTask 3 --->'+JSON.stringify(req.body));
- 
     
+    var claimObj = nforce.createSObject('Claim__c');
+            claimObj.set('Claimant_Name__c', req.body.claimant);
+            claimObj.set('Communication_Address__c', req.body.address);
+            claimObj.set('PAN_Number__c', req.body.panno);
+            claimObj.set('Policy_Holder_Name__c', req.body.policyholdername);
+            claimObj.set('Telephone_Number__c', req.body.phone);
+            claimObj.set('Linked_Contact__c', req.userId);
+           
+            org.insert({ sobject: claimObj}, function(err, resp){
+                if (err) {
+                    console.log('First case insert failed: ' + JSON.stringify(err));
+                    org.authenticate({username: userName, password: password}, function(err) {
+                        if (err) {
+                            console.log('Authentication failed: ' + JSON.stringify(err));
+                            return next(err);
+                        } else {
+                            // retry
+                            org.insert({ sobject: claimObj}, function(err, resp) {
+                                if (err) {
+                                    console.log('Second case insert failed: ' + JSON.stringify(err));
+                                    return next(err);
+                                } else {
+                                    console.log('Second case insert worked');
+                                    return res.send('ok');
+                                }
+                            });
+                        }
+                    })
+                } else {
+                    console.log('First case insert worked');
+                    res.send('ok');
+                }
+            });
+   
 };
 
 function revokeToken(req, res, next) {
