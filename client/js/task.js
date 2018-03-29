@@ -45,7 +45,7 @@ angular.module('nibs.task', ['nibs.config'])
        $("#date").text(today);
        $scope.manager = {};
        $scope.task = {};
-       $scope.task = {managerid:'',projecttype:''};
+       $scope.task = {managerid:'',projecttype:'',suser: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('sfpassword')};
        var managerList;
        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
        var mId;
@@ -58,9 +58,7 @@ angular.module('nibs.task', ['nibs.config'])
                         placeholder: "Select Task Manager / Assignee",
                         onValueChanged: function(data) {
                               mId = data.value.id;
-                              //$("#managerid").val(mId);
                               $scope.task.managerid =  mId;
-                              alert(JSON.stringify($scope.task));
 
                         }
                  });
@@ -76,26 +74,16 @@ angular.module('nibs.task', ['nibs.config'])
                         onValueChanged: function(data) {
                             pName = data.value;
                             $scope.task.projecttype =  pName;
-                           // $("#projecttype").val(pName);
-                            //$scope.task = {projecttype: pName};
-                            //alert(JSON.stringify($scope.task));
+                           
                         }
                     });
        
 
        $scope.submit = function () {
-              
-                  alert('$scope.task Json--'+JSON.stringify($scope.task));
-                  //$scope.task = {managerid: mId};                            
-                  //$scope.task = {managerid: mId,projecttype:pName,sfu: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('sfpassword')};
-                  //alert(' $scope.task Json 2--'+JSON.stringify($scope.task));
-                //$scope.task = {sfu: $window.localStorage.getItem('sfuser')};
-                //$scope.task = {sfu: $window.localStorage.getItem('spassword')};
-                //alert(JSON.strigify($scope.task));
-                /*Task.create($scope.task).success(function() {
-                     $ionicPopup.alert({title: 'Thank You', content: 'Your Claim submitted successfully.'});
+           Task.create($scope.task).success(function() {
+                     $ionicPopup.alert({title: 'Thank You', content: 'Your Task submitted successfully.'});
                      $scope.task = {};
-                });*/
+                });
           
         };
 
