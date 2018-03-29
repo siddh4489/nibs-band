@@ -26,7 +26,7 @@ angular.module('nibs.tasklist', ['nibs.config'])
     //Controllers
     .controller('TaskListController', function ($scope, $window, $ionicPopup, Tasklist, User) {
         $scope.claimlist = {};
-        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword'),'uid':$window.localStorage.getItem('uid')};
             Tasklist.getTaskList($scope.sfu).success(function(datalist) {
                      $scope.claimlist = datalist;
                 });
