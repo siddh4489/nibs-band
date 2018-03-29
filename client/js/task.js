@@ -77,8 +77,8 @@ angular.module('nibs.task', ['nibs.config'])
        $scope.submit = function () {
                   alert(' $scope.task--'+$scope.task);
                   alert(' $scope.task Json--'+JSON.stringify($scope.task));
-                                              
-                  $scope.task = {managerid: mId,projecttype:pName,sfu: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('sfpassword')};
+                  $scope.task = {managerid: mId};                            
+                  //$scope.task = {managerid: mId,projecttype:pName,sfu: $window.localStorage.getItem('sfuser'),spassword: $window.localStorage.getItem('sfpassword')};
                   alert(' $scope.task Json 2--'+JSON.stringify($scope.task));
                 //$scope.task = {sfu: $window.localStorage.getItem('sfuser')};
                 //$scope.task = {sfu: $window.localStorage.getItem('spassword')};
