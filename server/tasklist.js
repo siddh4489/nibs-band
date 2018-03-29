@@ -2,12 +2,8 @@ var db = require('./pghelper'),
     config = require('./config'),
     nforce = require('nforce');
 
-function getClaims(req, res, next) {
-    console.log('---claim--->'+req);
-    console.log('---claim 1--->'+req.body.spassword);
-    console.log('---claim 2--->'+req.body.suser);
-    console.log('---claim 0 --->'+JSON.stringify(req.body));
-    
+function getTasklists(req, res, next) {
+   
 
     var oauth;
      org = nforce.createConnection({
@@ -19,11 +15,10 @@ function getClaims(req, res, next) {
             mode: 'single' // optional, 'single' or 'multi' user mode, multi default
         });
 
-    //org.authenticate({ username: userName, password: password}, function(err, resp) {
-
     org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
         if(!err) {
-        var q = "SELECT Id, Name FROM Account";
+        comsole.log(' Logged in user id : '+req.body.uid);   
+        var q = "SELECT Id,Task_Name__c,Task_Description__c,Project_Type__c,No_of_Hours__c,Manager_Name__c Name FROM Task__c";
  
         org.query({ query: q }, function(err, resp){
             
@@ -56,5 +51,5 @@ function revokeToken(req, res, next) {
 
 }
 
-exports.getClaims = getClaims;
+exports.getTasklists = getTasklists;
 exports.revokeToken = revokeToken;
