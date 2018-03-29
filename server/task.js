@@ -58,24 +58,22 @@ function createTask(req, res, next) {
     console.log('---createTask 2--->'+req.body.suser);
     console.log('---createTask 3 --->'+JSON.stringify(req.body));
     
-    var claimObj = nforce.createSObject('Claim__c');
-            claimObj.set('Claimant_Name__c', req.body.claimant);
-            claimObj.set('Communication_Address__c', req.body.address);
-            claimObj.set('PAN_Number__c', req.body.panno);
-            claimObj.set('Policy_Holder_Name__c', req.body.policyholdername);
-            claimObj.set('Telephone_Number__c', req.body.phone);
-            claimObj.set('Linked_Contact__c', req.userId);
+    var taskObj = nforce.createSObject('Task__c');
+            taskObj.set('No_of_Hours__c', req.body.hours);
+            taskObj.set('Project_Type__c', req.body.projecttype);
+            taskObj.set('Task_Description__c', req.body.desc);
+            taskObj.set('Task_Name__c', req.body.name);
+            taskObj.set('Manager__c', req.body.managerid);
            
-            org.insert({ sobject: claimObj}, function(err, resp){
+            org.insert({ sobject: taskObj}, function(err, resp){
                 if (err) {
-                    console.log('First case insert failed: ' + JSON.stringify(err));
-                    org.authenticate({username: userName, password: password}, function(err) {
+                    console.log('First Task insert failed: ' + JSON.stringify(err));
+                    org.authenticate({username: req.body.suser, password: req.body.spassword}, function(err) {
                         if (err) {
                             console.log('Authentication failed: ' + JSON.stringify(err));
                             return next(err);
                         } else {
-                            // retry
-                            org.insert({ sobject: claimObj}, function(err, resp) {
+                            org.insert({ sobject: taskObj}, function(err, resp) {
                                 if (err) {
                                     console.log('Second case insert failed: ' + JSON.stringify(err));
                                     return next(err);
