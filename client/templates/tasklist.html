@@ -13,8 +13,20 @@
                 <div ng-if="claimlist.length>0">
                     <div ng-repeat="claim in claimlist" class="list card"> 
                        <div class="item item-divider">
-                        Task Name : {{claim.name}}
+                        Task Name : {{claim.Task_Name__c}}
                       </div>
+                       <a class="item" href="#">
+                        <b>Task Description</b> : {{claim.Task_Description__c}}
+                      </a>
+                       <a class="item" href="#">
+                        <b>Project Type</b> : {{claim.Project_Type__c}}
+                      </a>
+                       <a class="item" href="#">
+                        <b>Taken Hours</b> : {{claim.No_of_Hours__c}}
+                      </a>
+                        <a class="item" href="#">
+                        <b>Manager / Assignee</b> : {{claim.Manager_Name__c}}
+                      </a>
                     </div>
                 </div>    
       </div>
