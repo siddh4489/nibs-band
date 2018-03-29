@@ -72,7 +72,7 @@ angular.module('nibs.task', ['nibs.config'])
                         }
                     });
        $scope.task = {};
-       $scope.task = {managerid: mId};
+       $scope.task = {managerid: 'sdf'};
        alert(JSON.stringify($scope.task));
 
        $scope.submit = function () {
