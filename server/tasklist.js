@@ -54,7 +54,7 @@ function getResourceview(req, res, next) {
     org.authenticate({ username: req.body.suser, password: req.body.spassword}, function(err, resp) {
         if(!err) {
         console.log(' Logged in user id : '+req.body.uid);   
-        var q = "SELECT Id,Task_Name__c,Task_Description__c,Project_Type__c,No_of_Hours__c,Manager_Name__c FROM Task__c where Task_Date__c = 2018-03-29 ";
+        var q = "SELECT Id,Task_Name__c,Task_Description__c,Project_Type__c,No_of_Hours__c,Manager_Name__c,Manager__c  FROM Task__c where Task_Date__c = 2018-03-29 ";
             org.query({ query: q }, function(err, resp){
               if(!err && resp.records) {
                  console.log(' resp.records in user id : '+resp.records); 
