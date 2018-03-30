@@ -94,31 +94,29 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
         $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
             Taskview.getResourveView($scope.sfu).success(function(datalist) {
                 
-                    // alert('----> resource View '+datalist.length);
-                     alert('----> resource View '+JSON.stringify(datalist));
                    var resourceview = '[';
+                   var taskDataList = [];
                     for(i=0;i<datalist.length;i++){
+                       var taskData = {};
+                        taskData.id = datalist[i].createdbyid;
+                        taskData.parentId = datalist[i].manager__c;
+                        taskData.taskname = datalist[i].task_name__c;
+                        //taskData.desc = datalist[i].task_description__c;
+                        taskDataList.push(taskData);
                        resourceview += '{ id:"'+datalist[i].createdbyid+'", parentId: "'+datalist[i].manager__c +'",taskname : "'+datalist[i].task_name__c +'",desc:"'+datalist[i].task_description__c+'"},'
                     }
                     resourceview = resourceview.substring(0, resourceview.length - 1);
                     resourceview += ']';
-                    alert(resourceview);
                     console.log(resourceview);
+                    console.log('taskDataList---'+taskDataList);
                      
                     var peopleElement = document.getElementById("people");
                     var orgChart = new getOrgChart(peopleElement, {
                         primaryFields: ["taskname"],
                         //photoFields: ["image"],
-                        dataSource: resourceview
+                        dataSource: taskDataList
                     });
-                
-                     //$scope.taskview = datalist;
-            });
-    
-    
-    
-       
-    
+             });
     })
 
     .controller('EditProfileCtrl', function ($scope, $window, $ionicPopup, S3Uploader, User, Preference, Size, Status) {
