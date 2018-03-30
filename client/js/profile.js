@@ -93,9 +93,14 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
       $scope.taskview = {};
         $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
             Taskview.getResourveView($scope.sfu).success(function(datalist) {
-                     alert('----> resource View '+datalist);
+                     alert('----> resource View '+datalist.length);
                      alert('----> resource View '+JSON.stringify(datalist));
-                      
+                
+                   for(i=0;i<=datalist.length;i++){
+                       alert(datalist[i].task_name__c);
+                   }
+                    //var resourceview = [{ text: 'Shred', value: 'Shred'},]
+                     
                     var peopleElement = document.getElementById("people");
                     var orgChart = new getOrgChart(peopleElement, {
                         primaryFields: ["name", "title", "phone", "mail"],
