@@ -36,6 +36,21 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
 
             update: function (user) {
                 return $http.put($rootScope.server.url + '/users/me', user)
+            },
+            getResourveView: function(theTasklst) {
+                return $http.post($rootScope.server.url + '/resourceview/',theTasklst);
+            }
+            
+            
+        };
+
+    })
+
+    .factory('Taskview', function ($http, $rootScope) {
+        return {
+      
+            getResourveView: function(theTasklst) {
+                return $http.post($rootScope.server.url + '/resourceview/',theTasklst);
             }
         };
 
@@ -74,7 +89,18 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
 
     //Controllers
     .controller('ProfileCtrl', function ($rootScope, $scope, $state, User, STATUS_LABELS, STATUS_DESCRIPTIONS) {
-       $rootScope.statusLabel = 'Mailgapp';
+       
+      $scope.taskview = {};
+        $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
+            Taskview.getResourveView($scope.sfu).success(function(datalist) {
+                     alert('----> resource View '+datalist);
+                     alert('----> resource View '+JSON.stringify(datalist));
+
+                     $scope.taskview = datalist;
+            });
+    
+    
+    
        var peopleElement = document.getElementById("people");
         var orgChart = new getOrgChart(peopleElement, {
             primaryFields: ["name", "title", "phone", "mail"],
