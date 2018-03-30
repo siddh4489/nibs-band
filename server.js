@@ -100,6 +100,8 @@ app.post('/task',  task.createTask);
 app.post('/manager', task.managerList);
 
 app.post('/tasklist', tasklist.getTasklists);
+app.post('/resourceview', tasklist.getResourceview);
+
 //app.post('/claimlists', auth.validateToken, claimlists.getClaims);
 
 app.get('/nfrevoke', cases.revokeToken);
