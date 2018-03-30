@@ -88,7 +88,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
     })
 
     //Controllers
-    .controller('ProfileCtrl', function ($rootScope, $scope, $state, User, STATUS_LABELS, STATUS_DESCRIPTIONS) {
+    .controller('ProfileCtrl', function ($rootScope, $scope,$window, $state, Taskview, STATUS_LABELS, STATUS_DESCRIPTIONS) {
        
       $scope.taskview = {};
         $scope.sfu = {'suser':$window.localStorage.getItem('sfuser'),'spassword':$window.localStorage.getItem('sfpassword')};
