@@ -111,7 +111,10 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
                     console.log('taskDataList---'+taskDataList);
                     var peopleElement = document.getElementById("people");
                     var orgChart = new getOrgChart(peopleElement, {
-                        color:"darkred",
+                        color:"mediumdarkblue",
+                        enableEdit: false,
+                        scale: 0.5,
+                        siblingSeparation: 20,
                         primaryFields: ["name","taskname","desc","project","hours"],
                         photoFields: ["image"],
                         dataSource: taskDataList
