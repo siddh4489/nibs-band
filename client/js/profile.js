@@ -113,7 +113,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
                     var orgChart = new getOrgChart(peopleElement, {
                         color:"mediumdarkblue",
                         enableEdit: false,
-                        scale: 1,
+                        //scale: 1,
                         //siblingSeparation: 20,
                         primaryFields: ["name","taskname","desc","project","hours"],
                         photoFields: ["image"],
