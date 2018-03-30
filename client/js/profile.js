@@ -100,7 +100,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
                     for(i=0;i<datalist.length;i++){
                        resourceview += '{ id:"'+datalist[i].id+'", parentId: "'+datalist[i].Manager__c +'",taskname : "'+datalist[i].task_name__c +'",desc:"'+datalist[i].task_description__c+'"},'
                     }
-                    resourceview = resourceview.substring(0, jsonStr.length - 1);
+                    resourceview = resourceview.substring(0, resourceview.length - 1);
                     resourceview += ']';
                     alert(resourceview);
                      
