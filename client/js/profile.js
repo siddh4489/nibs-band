@@ -109,7 +109,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
                     var orgChart = new getOrgChart(peopleElement, {
                         primaryFields: ["taskname"],
                         //photoFields: ["image"],
-                        dataSource: [{ id:"00528000001ZrVoAAK", parentId: "null",taskname : "Discount calculate functionality",desc:"Jira #: SPLAT 3145.Volume,Term discount calculation logic changes"},{ id:"0050I000008Ds6qQAC", parentId: "00528000001ZrVoAAK",taskname : "Workflow and Trigger",desc:"Changes in workflow and Trigger."}]
+                        dataSource: resourceview
                     });
                 
                      //$scope.taskview = datalist;
