@@ -98,11 +98,12 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
                      alert('----> resource View '+JSON.stringify(datalist));
                    var resourceview = '[';
                     for(i=0;i<datalist.length;i++){
-                       resourceview += '{ id:"'+datalist[i].id+'", parentId: "'+datalist[i].Manager__c +'",taskname : "'+datalist[i].task_name__c +'",desc:"'+datalist[i].task_description__c+'"},'
+                       resourceview += '{ id:"'+datalist[i].id+'", parentId: "'+datalist[i].manager__c +'",taskname : "'+datalist[i].task_name__c +'",desc:"'+datalist[i].task_description__c+'"},'
                     }
                     resourceview = resourceview.substring(0, resourceview.length - 1);
                     resourceview += ']';
                     alert(resourceview);
+                    console.log(resourceview);
                      
                     var peopleElement = document.getElementById("people");
                     var orgChart = new getOrgChart(peopleElement, {
