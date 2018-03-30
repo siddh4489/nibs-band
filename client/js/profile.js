@@ -100,7 +100,7 @@ angular.module('nibs.profile', ['nibs.s3uploader', 'nibs.config', 'nibs.status']
                         var orgChart = new getOrgChart(peopleElement, {
                             primaryFields: ["task_name__c", "task_description__c"],
                             photoFields: ["image"],
-                            dataSource: datalist;
+                            dataSource: datalist
                         });
                      //$scope.taskview = datalist;
             });
