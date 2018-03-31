@@ -371,21 +371,17 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
         }).then(function(modal) {
             $scope.modal = modal;
         });
-       
-
         $window.localStorage.removeItem('user');
         $window.localStorage.removeItem('token');
         $window.localStorage.removeItem('sid');
-
         $scope.sfuser = {};
-
         $scope.sflogin = function () {
 
             Auth.sflogin($scope.sfuser)
                 .success(function (data) {
-                console.log('SF Login data :--' + data.token); 
-                console.log('SF Login data :--' + JSON.stringify(data)); 
-                console.log('SF Login data 1 :--' + JSON.stringify(data.runninguser));
+                //console.log('SF Login data :--' + data.token); 
+                //console.log('SF Login data :--' + JSON.stringify(data)); 
+                //console.log('SF Login data 1 :--' + JSON.stringify(data.runninguser));
                 console.log('SF Login data 2 :--' + data.runninguser[0].firstname);
                 $rootScope.username = data.runninguser[0].name;
                 
@@ -400,6 +396,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
 
                 })
                 .error(function (err) {
+                    console.log('err  :--' + err);
                     $ionicPopup.alert({title: 'Oops', content: err});
                 });
         };
