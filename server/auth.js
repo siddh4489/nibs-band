@@ -169,8 +169,6 @@ function sflogin(req, res, next) {
 
 	
     var nforce = require('nforce');
-    //var userName = config.api.userName,
-    //var password = config.api.password;
     var oauth;
     var org = nforce.createConnection({
         clientId: config.api.clientId,
@@ -181,7 +179,6 @@ function sflogin(req, res, next) {
         mode: 'single' // optional, 'single' or 'multi' user mode, multi default
     });
 
-//org.authenticate({ username: userName, password: password}, function(err, resp) {
 org.authenticate({ username: creds.email, password: creds.password}, function(err, resp) {
     if(!err) {
         console.log('nforce connection succeeded...'+org.oauth.access_token);
