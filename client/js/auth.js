@@ -97,7 +97,7 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
             sflogin: function (sfuser) {
                 return $http.post($rootScope.server.url + '/sflogin', sfuser)
                     .success(function (data) {
-                        console.log('----------->'+ JSON.stringify(data)); 
+                        
                         $rootScope.user = data.sfuser;
                         $window.localStorage.user = JSON.stringify(data.sfuser);
                         $window.localStorage.token = data.token;
@@ -393,7 +393,6 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
                        $ionicPopup.alert({title: 'Message', content: data});
                    }
                 
-                 $ionicPopup.alert({title: 'Message', content: data});
 
                 })
                 .error(function (err) {
