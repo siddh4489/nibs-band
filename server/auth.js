@@ -202,8 +202,8 @@ org.authenticate({ username: creds.email, password: creds.password}, function(er
         //return res.send({'status':'1','token':org.oauth.access_token,'sid1':'raj1','luser':loggedUser});
      
     } else {
-        console.log('nforce connection failed: ' + err.message);
-        oauth = resp;
+        console.log('nforce connection failed: invalid cred ' + err.message);
+        //oauth = resp;
 	return res.send(invalidCredentials);
     
     }
