@@ -380,18 +380,18 @@ angular.module('nibs.auth', ['openfb', 'nibs.config'])
             Auth.sflogin($scope.sfuser)
                 .success(function (data) {
                 //console.log('SF Login data :--' + data.token); 
-                //console.log('SF Login data :--' + JSON.stringify(data)); 
+                console.log('SF Login data :--' + JSON.stringify(data)); 
                 //console.log('SF Login data 1 :--' + JSON.stringify(data.runninguser));
                 //console.log('SF Login data 2 :--' + data.runninguser[0].firstname);
                 //$rootScope.username = data.runninguser[0].name;
                 
-                 /* if(data.status == "1"){
+                  if(data.status == "1"){
                        console.log(' IF '+data);
                        $state.go("app.profile");
                    }else{
                        console.log(' Else '+data);
                        $ionicPopup.alert({title: 'Message', content: data});
-                   }*/
+                   }
                 
                  $ionicPopup.alert({title: 'Message', content: data});
 
