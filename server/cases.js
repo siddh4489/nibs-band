@@ -16,12 +16,12 @@ var db = require('./pghelper'),
     });
 
 
-org.authenticate({ username: userName, password: password}, function(err, resp) {
+org.authenticate({ username: 'mohitdmoolani@resourceful-badger-131083.com', password: 'j4WKk75Z'}, function(err, resp) {
     if(!err) {
-        console.log('nforce connection succeeded');
+        console.log('nforce connection succeeded case');
      
     } else {
-        console.log('nforce connection failed: ' + err.message);
+        console.log('nforce connection failed: case ' + err.message);
      
     }
 });
